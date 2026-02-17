@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jak začít s Microsoft 365 Copilot – FŽP ČZU</title>
+    <style>
+        :root {
+            --primary: #006633;
+            --primary-dark: #004d26;
+            --primary-light: #e0f0e8;
+            --accent: #2e7d32;
+            --accent2: #0078d4;
+            --bg: #f5f7f5;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #555;
+            --border: #d4e4d4;
+            --warning-bg: #fff4ce;
+            --warning-border: #ffc107;
+            --tip-bg: #e6f4ea;
+            --tip-border: #34a853;
+            --role-vedec: #1565c0;
+            --role-pedagog: #6a1b9a;
+            --role-admin: #e65100;
+            --role-projekt: #00838f;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2e7d32 50%, #0078d4 100%);
+            color: white;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .header .institution {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Role badges */
+        .roles-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Intro box */
+        .intro-box {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+        }
+
+        .intro-box h2 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .intro-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .toc h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .toc-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .toc-group-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #999;
+            margin-top: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .toc-group-label:first-child {
+            margin-top: 0;
+        }
+
+        .toc-group-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .toc-group-items a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            padding: 0.55rem 1.5rem;
+            border: 1px solid #c8ddd0;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            text-decoration: none;
+            background: #f7fbf8;
+            transition: all 0.2s ease;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
+
+        .toc-group-items a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,102,51,0.2);
+            transform: translateY(-1px);
+        }
+
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.92rem;
+            padding: 0.25rem 0;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: var(--primary); }
+        .toc a .emoji { margin-right: 0.3rem; }
+
+        /* Section Cards */
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+        }
+
+        .section h2 {
+            font-size: 1.45rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h2 .emoji { font-size: 1.5rem; }
+
+        .section h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-top: 1.3rem;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section ul, .section ol { padding: 0; }
+
+        .section ul { list-style: none; }
+
+        .section ul li {
+            padding: 0.35rem 0 0.35rem 1.4rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .section ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0.3rem;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section ol {
+            padding-left: 1.5rem;
+        }
+
+        .section ol li {
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Use-case examples per role */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .use-case-card {
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            font-size: 0.88rem;
+            border-left: 4px solid;
+        }
+
+        .use-case-card.vedec {
+            background: #e3f2fd;
+            border-color: var(--role-vedec);
+        }
+
+        .use-case-card.pedagog {
+            background: #f3e5f5;
+            border-color: var(--role-pedagog);
+        }
+
+        .use-case-card.admin {
+            background: #fff3e0;
+            border-color: var(--role-admin);
+        }
+
+        .use-case-card.projekt {
+            background: #e0f7fa;
+            border-color: var(--role-projekt);
+        }
+
+        .use-case-card .role-label {
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .use-case-card.vedec .role-label { color: var(--role-vedec); }
+        .use-case-card.pedagog .role-label { color: var(--role-pedagog); }
+        .use-case-card.admin .role-label { color: var(--role-admin); }
+        .use-case-card.projekt .role-label { color: var(--role-projekt); }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .legend-dot.vedec { background: var(--role-vedec); }
+        .legend-dot.pedagog { background: var(--role-pedagog); }
+        .legend-dot.admin { background: var(--role-admin); }
+        .legend-dot.projekt { background: var(--role-projekt); }
+
+        /* Warning & Tip boxes */
+        .warning {
+            background: var(--warning-bg);
+            border-left: 4px solid var(--warning-border);
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .tip {
+            background: var(--tip-bg);
+            border-left: 4px solid var(--tip-border);
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Prompt example */
+        .prompt-example {
+            background: #f8f9fa;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.88rem;
+            color: #333;
+            position: relative;
+        }
+
+        .prompt-example::before {
+            content: '💬 Prompt';
+            display: block;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--accent2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .container { padding: 1rem; }
+            .section { padding: 1.2rem; }
+            .toc-grid { grid-template-columns: 1fr; }
+            .use-cases { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; }
+            .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section { box-shadow: none; border: 1px solid var(--border); break-inside: avoid; }
+            .toc { break-after: page; }
+            .use-case-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="institution">Fakulta životního prostředí · Česká zemědělská univerzita v Praze</div>
+    <h1>Jak začít s Microsoft 365 Copilot</h1>
+    <div class="subtitle">Praktický průvodce využitím AI asistenta pro vědce, pedagogy, administrativu a projektový management na FŽP ČZU</div>
+    <div class="roles-bar">
+        <span class="role-badge">🔬 Vědci</span>
+        <span class="role-badge">🎓 Pedagogové</span>
+        <span class="role-badge">🏢 Administrativa</span>
+        <span class="role-badge">📐 Projektový management</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Intro -->
+    <div class="intro-box">
+        <h2>🚀 Co je Microsoft 365 Copilot?</h2>
+        <p>Microsoft 365 Copilot je AI asistent integrovaný přímo do aplikací, které už používáte – Outlook, Teams, Word, Excel, PowerPoint a dalších. Pracuje <strong>výhradně s daty ve vašem Microsoft 365 prostředí</strong> (e-maily, soubory na OneDrive/SharePoint, schůzky, chaty) a respektuje všechna oprávnění – vidí jen to, k čemu máte přístup vy.</p>
+        <p>Na ČZU máte přístup k M365 – tento průvodce vám ukáže, <strong>jak Copilot konkrétně pomůže ve vaší roli</strong> na FŽP.</p>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <strong>Legenda příkladů:</strong>
+        <div class="legend-item"><div class="legend-dot vedec"></div> Vědec / Výzkumník</div>
+        <div class="legend-item"><div class="legend-dot pedagog"></div> Pedagog</div>
+        <div class="legend-item"><div class="legend-dot admin"></div> Administrativa</div>
+        <div class="legend-item"><div class="legend-dot projekt"></div> Projektový management</div>
+    </div>
+
+    <!-- TOC -->
+    <nav class="toc">
+        <h2>Obsah</h2>
+        <div class="toc-grid">
+
+            <div class="toc-group-label">AI nástroje</div>
+            <div class="toc-group-items">
+                <a href="#copilot-chat">Copilot Chat</a>
+                <a href="#researcher">Researcher</a>
+                <a href="#analyst">Analyst</a>
+            </div>
+
+            <div class="toc-group-label">Office aplikace</div>
+            <div class="toc-group-items">
+                <a href="#outlook">Outlook</a>
+                <a href="#teams">Teams</a>
+                <a href="#word">Word</a>
+                <a href="#excel">Excel</a>
+                <a href="#powerpoint">PowerPoint</a>
+                <a href="#forms">Forms</a>
+            </div>
+
+            <div class="toc-group-label">Tvorba a automatizace</div>
+            <div class="toc-group-items">
+                <a href="#create">Create</a>
+                <a href="#workflows">Workflows</a>
+                <a href="#agents">Agenti</a>
+            </div>
+
+            <div class="toc-group-label">Další</div>
+            <div class="toc-group-items">
+                <a href="#edge">Edge</a>
+                <a href="#mobile">Mobil</a>
+            </div>
+
+            <div class="toc-group-label">Návod</div>
+            <div class="toc-group-items">
+                <a href="#tips">Jak promptovat</a>
+                <a href="#start">Jak začít</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ===== COPILOT CHAT ===== -->
+    <div class="section" id="copilot-chat">
+        <h2><span class="emoji">💬</span> Copilot Chat (centrální rozhraní)</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">Hlavní vstupní bod do AI asistenta. Dostupný na <strong>m365.cloud.microsoft/chat</strong> nebo přímo v Teams. Zde zadáváte dotazy, pracujete s dokumenty a voláte specializované agenty.</p>
+
+        <h3>Základní funkce</h3>
+        <ul>
+            <li><strong>Pracovní režim (Work)</strong> – čtení a práce s firemními daty: e-maily, soubory na OneDrive/SharePointu, kalendář, chaty v Teams</li>
+            <li><strong>Webový režim (Web)</strong> – vyhledávání informací na internetu (odborné zdroje, aktuální trendy)</li>
+            <li><strong>Lomítko (/)</strong> – odkaz na konkrétní soubor, osobu, schůzku, e-mail nebo SharePoint přímo v promptu</li>
+            <li><strong>Zavináč (@)</strong> – přivolání specializovaného agenta (Researcher, Analyst aj.) přímo do konverzace</li>
+        </ul>
+
+        <h3>Personalizace</h3>
+        <ul>
+            <li><strong>Custom Instructions</strong> – nastavte si svůj profil: „Jsem výzkumník v oblasti ekologie, pište mi akademickým stylem, vždy česky"</li>
+            <li><strong>Memory / Vzpomínky</strong> – Copilot si pamatuje důležité informace: „Zapamatuj si, že pracuji na projektu TAČR TL0…"</li>
+            <li><strong>Galerie promptů</strong> – uložte si opakovaně používané dotazy a sdílejte je s kolegy na katedře</li>
+            <li><strong>Plánované prompty</strong> – automatické spouštění (např. každé pondělí ráno „shrň mé nové e-maily a úkoly z minulého týdne")</li>
+        </ul>
+
+        <h3>Práce s obsahem</h3>
+        <ul>
+            <li><strong>Notebooks</strong> – nahrajte více dokumentů k jednomu projektu/grantu a ptejte se přes ně</li>
+            <li><strong>Pages</strong> – kolaborativní editace textu s AI (obdoba Canvas v ChatGPT)</li>
+            <li><strong>Převod výstupů</strong> – z chatu jedním klikem do Word, PowerPoint nebo Pages</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                „Shrň mi klíčové body z /článek-review.docx a navrhni strukturu diskuse"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Na základě /sylabus-ekologie.docx vytvoř 10 zkušebních otázek pro studenty"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Shrň mé nepřečtené e-maily za poslední 3 dny a vypiš úkoly"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „Porovnej /rozpočet-2025.xlsx s /čerpání-Q4.xlsx a identifikuj odchylky"
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== RESEARCHER ===== -->
+    <div class="section" id="researcher">
+        <h2><span class="emoji">🔬</span> Researcher (Výzkumník)</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">Specializovaný agent pro hloubkový výzkum – prohledá internet i vaše pracovní data a vytvoří strukturovaný vícestránkový report.</p>
+
+        <ul>
+            <li><strong>Deep research na internetu</strong> – hloubkový výzkum s vícestránkovým výstupem (rešerše, analýza stavu poznání)</li>
+            <li><strong>Deep research v pracovních datech</strong> – prohledá vaše e-maily, soubory, SharePointy i hluboko do minulosti</li>
+            <li>Generuje <strong>strukturované reporty, infografiky, timeline</strong></li>
+            <li>Před spuštěním položí <strong>3 upřesňující otázky</strong> – pomáhá zaostřit výzkum</li>
+            <li>Výstup lze převést přímo do <strong>Word nebo PowerPoint</strong></li>
+            <li>Možnost zvolit zdroj: pouze web / pouze pracovní data / konkrétní SharePoint</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                „@Researcher Proveď rešerši aktuálních metod biomonitoringu kvality ovzduší v městských oblastech, zaměř se na studie z posledních 5 let"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „@Researcher Jaké inovativní metody výuky environmentálních věd se používají na evropských univerzitách?"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „@Researcher Prohledej moje e-maily a soubory k projektu LIFE+ a vytvoř přehled všech termínů a deliverables"
+            </div>
+        </div>
+
+        <div class="tip">💡 Researcher je ideální pro přípravu <strong>state-of-the-art</strong> kapitol do grantových žádostí nebo diplomových prací.</div>
+    </div>
+
+    <!-- ===== ANALYST ===== -->
+    <div class="section" id="analyst">
+        <h2><span class="emoji">📊</span> Analyst (Analytik)</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">Agent pro datovou analýzu – nahrajete dataset a on spustí Python kód na pozadí, vytvoří grafy a interpretace.</p>
+
+        <ul>
+            <li>Nahrání datasetu (CSV, Excel) → <strong>automatická analýza pomocí Pythonu</strong></li>
+            <li>Generování <strong>grafů</strong> – statických i interaktivních</li>
+            <li>Copilot sám naprogramuje analýzu, zpracuje a <strong>interpretuje výsledky</strong></li>
+            <li>Vhodnější pro pokročilejší analýzy než běžný Copilot v Excelu</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                „Analyzuj /data-mereni-pH.csv – spočítej základní statistiky, vytvoř boxplot podle lokalit a identifikuj outliers"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Analyzuj /výsledky-zkoušek-ZS2025.xlsx – průměrné známky podle předmětů, úspěšnost studentů, trend oproti minulému roku"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „Analyzuj /čerpání-grantu.xlsx – vytvoř graf čerpání po měsících vs. plán a prognózu do konce projektu"
+            </div>
+        </div>
+
+        <div class="warning">⚠️ Pro statisticky rigorózní analýzy (publikace) vždy ověřte výsledky v R/SPSS – Copilot je skvělý pro exploraci a rychlé přehledy.</div>
+    </div>
+
+    <!-- ===== OUTLOOK ===== -->
+    <div class="section" id="outlook">
+        <h2><span class="emoji">📧</span> Outlook</h2>
+
+        <h3>Čtení a shrnutí</h3>
+        <ul>
+            <li><strong>Shrnutí dlouhých e-mailů a vláken</strong> – klikněte „Shrnout" a získejte klíčové body z celé konverzace</li>
+            <li><strong>Rekapitulace po dovolené/konferenci</strong> – „Shrň mi nejdůležitější e-maily za poslední 2 týdny"</li>
+            <li><strong>Identifikace úkolů</strong> – „Jaké úkoly jsem dostal/a e-mailem za poslední měsíc?"</li>
+        </ul>
+
+        <h3>Psaní e-mailů</h3>
+        <ul>
+            <li><strong>Generování odpovědí</strong> – zadáte záměr a Copilot napíše celý e-mail</li>
+            <li><strong>Překlad</strong> – automatický překlad do více jazyků (odpověď zahraničnímu partnerovi anglicky, CC kolegovi česky)</li>
+            <li><strong>Úprava tónu</strong> – formální (pro děkana), věcný (pro kolegy), vstřícný (pro studenty)</li>
+            <li><strong>Koučování</strong> – zpětná vazba: „Je můj e-mail srozumitelný? Jak bude vnímán?"</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                „Napiš e-mail editorovi časopisu – poděkuj za recenze, shrň provedené revize a požádej o zrychlení procesu. Formální, anglicky."
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Odpověz studentovi – vysvětli, proč nedostal zápočet, a navrhni termín konzultace. Vstřícně, ale jasně."
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Napiš hromadný e-mail vedoucím kateder – připomeň termín odevzdání podkladů pro výroční zprávu do 15.3."
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „Napiš e-mail partnerům projektu v angličtině – shrň stav plnění milníků a požádej o zaslání reportů do 28.2."
+            </div>
+        </div>
+
+        <div class="warning">⚠️ Copilot v Outlooku pracuje pouze s e-maily v rámci M365 – ne s externími účty (Gmail, Seznam apod.)</div>
+    </div>
+
+    <!-- ===== TEAMS ===== -->
+    <div class="section" id="teams">
+        <h2><span class="emoji">🎥</span> Teams</h2>
+
+        <h3>Schůzky</h3>
+        <ul>
+            <li><strong>Přepis schůzek</strong> – automatický přepis hovoru v reálném čase (čeština i angličtina)</li>
+            <li><strong>Sumarizace</strong> – po schůzce (nebo i během ní) Copilot vytáhne klíčová témata a rozhodnutí</li>
+            <li><strong>Extrakce úkolů</strong> – automaticky identifikuje, kdo dostal jaký úkol</li>
+            <li><strong>Přišli jste pozdě?</strong> – „Co se dosud řešilo? Mám nějaké úkoly?"</li>
+            <li><strong>Strukturovaný zápis</strong> – Copilot vytvoří zápis ze schůzky připravený k odeslání</li>
+        </ul>
+
+        <h3>Chaty a kanály</h3>
+        <ul>
+            <li><strong>Sumarizace chatů</strong> – shrnutí dění v kanálu katedry/projektu za posledních 30 dní</li>
+            <li>Copilot je přítomný ve všech chatech – stačí se zeptat</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                Po projektové schůzce: „Vytvoř zápis ze schůzky, rozděl podle témat a vypiš action items s odpovědnými osobami"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                Po poradě katedry: „Shrň, co se rozhodlo ohledně úprav studijních plánů a jaké jsou termíny"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Shrň kanál ‚Organizace' v Teams – co se řešilo za poslední 2 týdny?"
+            </div>
+        </div>
+
+        <div class="tip">💡 Data ze schůzek zůstávají v prostředí ČZU – na rozdíl od externích AI nástrojů na přepis (Otter, Fireflies apod.).</div>
+    </div>
+
+    <!-- ===== WORD ===== -->
+    <div class="section" id="word">
+        <h2><span class="emoji">📝</span> Word</h2>
+
+        <h3>Tvorba dokumentů</h3>
+        <ul>
+            <li><strong>Generování dokumentů</strong> – koncepty článků, zprávy, popisy projektů, posudky</li>
+            <li><strong>Tvorba z podkladů</strong> – „Vytvoř dokument na základě /podklady-grant.docx" (lomítko pro odkaz na soubor)</li>
+            <li><strong>Doplnění informací</strong> – Copilot dohledá a doplní chybějící údaje z internetu i vašich souborů</li>
+        </ul>
+
+        <h3>Úpravy textu</h3>
+        <ul>
+            <li><strong>Úprava odstavců</strong> – zkrácení, zjednodušení, akademičtější/populárnější styl</li>
+            <li><strong>Změna tónu</strong> – formální pro grant, srozumitelný pro studenty, populárně-vědecký pro web</li>
+            <li><strong>Překlad</strong> – překlad celých dokumentů nebo vybraných pasáží</li>
+        </ul>
+
+        <h3>Speciální funkce</h3>
+        <ul>
+            <li><strong>Přepis audia do textu</strong> – funkce Diktovat → nahrání zvukového záznamu → přepis do Wordu</li>
+            <li><strong>Sumarizace dlouhých dokumentů</strong> – shrnutí zápisů, přepisů, zpráv do klíčových bodů</li>
+            <li><strong>Extrakce textu z obrázků</strong> – nahrání fotografie → Copilot extrahuje text</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                „Přepiš abstract do češtiny, zachovej odbornou terminologii. Pak vytvoř populárně-vědeckou verzi pro web fakulty."
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Na základě /přednáška-GIS.pptx vytvoř studijní materiál ve Wordu – strukturovaný text s klíčovými pojmy"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Vytvoř návrh vnitřní směrnice pro evidenci služebních cest na základě /stará-směrnice.docx – aktualizuj podle nových pravidel"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „Shrň /závěrečná-zpráva-WP3.docx do 1 strany pro management summary"
+            </div>
+        </div>
+
+        <div class="tip">💡 <strong>Kombinace pro vědce:</strong> nahrávka z konference → přepis ve Wordu → sumarizace Copilotem = hodiny záznamu za minuty.</div>
+    </div>
+
+    <!-- ===== EXCEL ===== -->
+    <div class="section" id="excel">
+        <h2><span class="emoji">📊</span> Excel</h2>
+
+        <h3>Analýza dat</h3>
+        <ul>
+            <li><strong>Sumarizace a přehledy</strong> – součty, průměry, přehledy z tisíců řádků českou výzvou</li>
+            <li><strong>Kontingenční tabulky</strong> – bez znalosti konfigurace, stačí slovní zadání</li>
+            <li><strong>Grafy</strong> – koláčové, sloupcové, bodové na základě slovního popisu</li>
+        </ul>
+
+        <h3>Pomoc s funkcemi</h3>
+        <ul>
+            <li><strong>Pomoc se vzorci</strong> – „Napiš vzorec, který spočítá průměr jen pro řádky, kde je lokalita = Suchdol"</li>
+            <li><strong>Vysvětlení vzorců</strong> – klikněte na buňku a zeptejte se „Co tento vzorec dělá?"</li>
+        </ul>
+
+        <h3>Pokročilé funkce</h3>
+        <ul>
+            <li><strong>Finanční modely</strong> – projekce rozpočtu (optimistický/pesimistický scénář)</li>
+            <li><strong>Překlad Excelu</strong> – překlad obsahu tabulky se zachováním struktury</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                „Vytvoř kontingenční tabulku – průměrné hodnoty pH podle lokalit a ročních období. Přidej sloupcový graf."
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Spočítej celkové náklady na služební cesty za rok 2025 podle kateder a vytvoř přehledový graf"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „Porovnej plánovaný a skutečný rozpočet po položkách, zvýrazni položky s odchylkou &gt; 10 %"
+            </div>
+        </div>
+
+        <div class="warning">⚠️ <strong>Data musí být naformátována jako tabulka</strong> (Vložení → Tabulka) – bez toho Copilot nefunguje správně!</div>
+        <div class="warning">⚠️ Pro pokročilejší statistické analýzy (publikace) → raději <strong>Analyst agent</strong> nebo specializovaný software (R, SPSS)</div>
+    </div>
+
+    <!-- ===== POWERPOINT ===== -->
+    <div class="section" id="powerpoint">
+        <h2><span class="emoji">📽️</span> PowerPoint</h2>
+
+        <h3>Tvorba prezentací</h3>
+        <ul>
+            <li><strong>Z existujících souborů</strong> – Copilot načte Word dokument a vytvoří prezentaci</li>
+            <li><strong>Z Copilot chatu</strong> – přes Researcher → výstup → PowerPoint</li>
+            <li><strong>Z více zdrojů</strong> – sekce lze stavět na základě různých souborů</li>
+            <li><strong>Šablony</strong> – Brand Center na SharePointu pro firemní/fakultní šablony</li>
+        </ul>
+
+        <h3>Design a vizuály</h3>
+        <ul>
+            <li><strong>Výběr vizuálního návrhu</strong> – firemní šablony nebo šablony od Microsoftu</li>
+            <li><strong>Generování AI obrázků</strong> přímo v PowerPointu</li>
+            <li><strong>Automatické animace</strong> – přechodové efekty</li>
+        </ul>
+
+        <h3>Úpravy a překlad</h3>
+        <ul>
+            <li><strong>Úprava struktury</strong> – náhled témat, možnost přidat/odebrat snímky</li>
+            <li><strong>Překlad celé prezentace</strong> – do libovolného jazyka, zachová design i obrázky</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                „Vytvoř prezentaci z /článek-biodiverzita.docx – 15 slajdů pro konferenci, akademický styl, anglicky"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Vytvoř prezentaci pro přednášku z /skripta-hydrologie-kap3.docx – přidej vizuální schémata a shrnutí na konci"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „Vytvoř prezentaci průběžných výsledků projektu z /progress-report-Q4.docx – přelož do angličtiny pro zahraniční partnery"
+            </div>
+        </div>
+
+        <div class="tip">💡 Soubory musí být na OneDrive nebo SharePointu (ne na lokálním disku) – jinak je Copilot nevidí.</div>
+    </div>
+
+    <!-- ===== FORMS ===== -->
+    <div class="section" id="forms">
+        <h2><span class="emoji">📋</span> Forms (Formuláře a kvízy)</h2>
+        <ul>
+            <li>Tvorba formulářů a <strong>kvízů z copilot chatu</strong> nebo přímo ve Forms</li>
+            <li>Generování testů <strong>z nahraných podkladů</strong> (skripta, přednášky)</li>
+            <li>Automaticky vyplní <strong>správné odpovědi</strong></li>
+            <li>Možnost <strong>přeházet otázky i odpovědi</strong> pro různé varianty testu</li>
+            <li>Neomezený počet variant z jednoho materiálu</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Vytvoř test z /skripta-pedologie-kap5.docx – 20 otázek, multiple choice, 4 možnosti, vyznač správné odpovědi"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Vytvoř 3 různé varianty tohoto testu s přeházenými otázkami a odpověďmi"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Vytvoř formulář pro přihlášení na Den otevřených dveří FŽP – jméno, e-mail, obor zájmu, preferovaný čas"
+            </div>
+        </div>
+
+        <div class="tip">💡 Ideální pro pedagogy – z jednoho skriptíčka vygenerujete neomezené množství testových variant za minuty.</div>
+    </div>
+
+    <!-- ===== CREATE ===== -->
+    <div class="section" id="create">
+        <h2><span class="emoji">🖼️</span> Create (Obrázky a vizuální obsah)</h2>
+        <ul>
+            <li>Generování <strong>obrázků, infografik, stories, plakátů</strong></li>
+            <li><strong>Brand Kit</strong> – definice firemních barev, log, fontů → aplikuje se na výstupy</li>
+            <li>Úprava obrázků, export do PowerPointu</li>
+            <li>✅ Dostupné i v <strong>neplacené verzi</strong> Copilota</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                „Vytvoř infografiku znázorňující koloběh uhlíku pro přednášku z klimatologie"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Vytvoř plakát pro workshop ‚Udržitelnost v praxi' – zelená barevná paleta, logo FŽP"
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== WORKFLOWS ===== -->
+    <div class="section" id="workflows">
+        <h2><span class="emoji">⚙️</span> Workflows / Power Automate</h2>
+        <ul>
+            <li>Tvorba automatizací <strong>slovním popisem</strong> – Copilot vytvoří flow za vás</li>
+            <li>Triggery na e-maily, soubory, kalendářní události</li>
+            <li>Zjednodušená verze Power Automate přímo v Teams</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                „Když přijde e-mail s přílohou od děkanátu, ulož přílohu do SharePointu a pošli mi notifikaci v Teams"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Projektový management</div>
+                „7 dní před každým milníkem projektu mi pošli připomínku a e-mail odpovědným řešitelům"
+            </div>
+        </div>
+
+        <div class="tip">💡 Automatizace je často <strong>spolehlivější než AI</strong> – vždy provede přesně to samé. Ideální pro opakované administrativní procesy.</div>
+    </div>
+
+    <!-- ===== AGENTS ===== -->
+    <div class="section" id="agents">
+        <h2><span class="emoji">🤖</span> Agenti a Copilot Studio</h2>
+
+        <h3>Vlastní agenti</h3>
+        <ul>
+            <li>Tvorba vlastního agenta – připnuté soubory (např. vnitřní předpisy FŽP), znalostní báze, pokyny</li>
+            <li>Sdílení s kolegy na katedře nebo celou fakultou</li>
+            <li><strong>SharePoint agenti</strong> – automaticky na každém SharePointu, odpovídají na dotazy k obsahu daného webu</li>
+        </ul>
+
+        <h3>Microsoftí agenti</h3>
+        <ul>
+            <li><strong>Researcher</strong> – hloubkový výzkum (internet + pracovní data)</li>
+            <li><strong>Analyst</strong> – datová analýza s Pythonem</li>
+            <li><strong>Learning Agent</strong> – výukový agent pro vzdělávání z firemních materiálů</li>
+            <li><strong>Office Agent</strong> – kombinuje PowerPoint, Excel, Word; sám designuje výstupy</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                Agent „Předpisy FŽP" – přípnuté vnitřní normy, SZŘ, opatření děkana → kolegové se ptají přirozeným jazykem
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Pedagog</div>
+                Agent „Studijní poradce" – přípnuté studijní plány, pravidla studia → studenti se ptají na studijní záležitosti
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== EDGE ===== -->
+    <div class="section" id="edge">
+        <h2><span class="emoji">🌐</span> Edge (prohlížeč)</h2>
+        <ul>
+            <li><strong>Shrnutí YouTube videí</strong> – čte titulky a vytvoří shrnutí (skvělé pro konferenční záznamy)</li>
+            <li><strong>Práce s PDF</strong> – shrnutí a dotazování nad PDF dokumenty (články, směrnice)</li>
+            <li><strong>Čtení webových stránek</strong> – dotazy na obsah otevřené stránky</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                Otevřete PDF článku v Edge → „Shrň hlavní zjištění a metodologii tohoto článku"
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MOBILE ===== -->
+    <div class="section" id="mobile">
+        <h2><span class="emoji">📱</span> Mobilní aplikace</h2>
+        <ul>
+            <li>Copilot funguje v mobilních verzích Outlooku, Teams, Wordu a Excelu</li>
+            <li><strong>M365 Copilot app</strong> – mobilní rozhraní s přístupem k datům, foťákem, hlasovým režimem</li>
+        </ul>
+
+        <div class="warning">⚠️ V obchodu stahujte <strong>„M365 Copilot"</strong> (pracovní verze), nikoliv osobní verzi „Copilot".</div>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Vědec</div>
+                Na konferenci: vyfoťte poster → Copilot extrahuje text a shrne klíčové body
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administrativa</div>
+                Na cestě: „Shrň mi poslední 3 e-maily od proděkana" – hlasem přes telefon
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TIPS ===== -->
+    <div class="section" id="tips">
+        <h2><span class="emoji">🛠️</span> Jak správně promptovat</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">Kvalita výstupu závisí na kvalitě zadání. Používejte framework <strong>4 otázek</strong>:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 1.2rem;">
+            <div style="background: #e3f2fd; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">1️⃣</div>
+                <strong>CO</strong><br>
+                <span style="font-size: 0.85rem;">Co chci? (úkol)</span>
+            </div>
+            <div style="background: #e8f5e9; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">2️⃣</div>
+                <strong>PROČ</strong><br>
+                <span style="font-size: 0.85rem;">Proč to potřebuji? (kontext)</span>
+            </div>
+            <div style="background: #fff3e0; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">3️⃣</div>
+                <strong>JAK</strong><br>
+                <span style="font-size: 0.85rem;">Jak to má vypadat? (formát)</span>
+            </div>
+            <div style="background: #fce4ec; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">4️⃣</div>
+                <strong>Z ČEHO</strong><br>
+                <span style="font-size: 0.85rem;">Na základě čeho? (zdroje)</span>
+            </div>
+        </div>
+
+        <h3>Příklad dobrého promptu</h3>
+        <div class="prompt-example">
+            <strong>[CO]</strong> Vytvoř shrnutí výsledků měření kvality vody.<br>
+            <strong>[PROČ]</strong> Potřebuji to pro průběžnou zprávu projektu TAČR pro poskytovatele.<br>
+            <strong>[JAK]</strong> Strukturovaný text, max 2 strany, formální akademický styl, česky, s tabulkou klíčových parametrů.<br>
+            <strong>[Z ČEHO]</strong> Na základě /data-mereni-2025.xlsx a /metodika-WP2.docx
+        </div>
+
+        <h3>Další tipy</h3>
+        <ul>
+            <li><strong>Veďte rozhovor</strong> – nemusíte vše zadat napoprvé; upřesňujte, iterujte, doptávejte se</li>
+            <li><strong>Specifikujte jazyk</strong> – „odpověz česky" / „write in English" (jinak Copilot volí jazyk účtu)</li>
+            <li><strong>Uložte si osvědčené prompty</strong> do Galerie promptů a sdílejte s kolegy</li>
+            <li><strong>Custom Instructions</strong> – nastavte si jednou, platí trvale (role, jazyk, styl komunikace)</li>
+            <li>Na konci konverzace: „Připrav mi z toho finální one-shot prompt" → uložit a opakovaně používat</li>
+        </ul>
+
+        <div class="prompt-example">
+            <em>Příklad Custom Instructions pro vědce na FŽP:</em><br><br>
+            Jsem výzkumník na Fakultě životního prostředí ČZU v Praze. Zaměřuji se na [obor]. Komunikuj se mnou akademickým, ale srozumitelným stylem. Výstupy vždy česky, pokud neřeknu jinak. U odborných termínů uváděj i anglický ekvivalent. Moje klíčové soubory jsou na SharePointu [název].
+        </div>
+    </div>
+
+    <!-- ===== START ===== -->
+    <div class="section" id="start">
+        <h2><span class="emoji">✅</span> Jak začít – krok za krokem</h2>
+
+        <h3>1. Ověřte přístup</h3>
+        <ul>
+            <li>Přihlaste se na <strong><a href="https://m365.cloud.microsoft/chat" target="_blank" style="color: var(--accent2);">m365.cloud.microsoft/chat</a></strong> univerzitním účtem</li>
+            <li>Pokud vidíte Copilot Chat – máte přístup ✅</li>
+            <li>Pokud ne – kontaktujte IT oddělení ČZU ohledně licence</li>
+        </ul>
+
+        <h3>2. Nastavte si personalizaci</h3>
+        <ol>
+            <li>V Copilot Chatu klikněte na <strong>ikonu nastavení</strong> (ozubené kolečko)</li>
+            <li>Přejděte do <strong>Custom Instructions</strong></li>
+            <li>Vyplňte svůj profil: role, obor, preferovaný jazyk, styl komunikace</li>
+        </ol>
+
+        <h3>3. Přesuňte soubory do cloudu</h3>
+        <ul>
+            <li>Copilot vidí <strong>pouze OneDrive a SharePoint</strong> – ne lokální disk!</li>
+            <li>Přesuňte klíčové dokumenty na OneDrive nebo do SharePointu katedry/projektu</li>
+            <li>Pojmenovávejte soubory smysluplně (ne „final_v3_opraveno2.docx")</li>
+        </ul>
+
+        <h3>4. Vyzkoušejte první prompty</h3>
+        <ol>
+            <li>Otevřete Copilot Chat → „Shrň mé nepřečtené e-maily za tento týden"</li>
+            <li>V Teams po schůzce → klikněte na „Sumarizovat" v Copilotu</li>
+            <li>Ve Wordu → otevřete dokument a klikněte na ikonu Copilota v pásu karet</li>
+            <li>V Outlooku → při psaní e-mailu klikněte na „Koncept s Copilotem"</li>
+        </ol>
+
+        <h3>5. Postupně rozšiřujte</h3>
+        <ul>
+            <li>Začněte s <strong>jednou aplikací</strong>, kterou používáte nejčastěji</li>
+            <li>Po týdnu přidejte další</li>
+            <li>Ukládejte si osvědčené prompty do Galerie</li>
+            <li>Sdílejte zkušenosti s kolegy na katedře</li>
+        </ul>
+
+        <div class="tip">💡 <strong>Nejvýkonnější čas:</strong> ráno (středoevropský čas) – odpoledne po 14:00 bývá přetížení kvůli USA.</div>
+        <div class="tip">💡 <strong>Copilot je pohyblivý terč</strong> – Microsoft přidává desítky novinek měsíčně. Sledujte <strong>supersimple365.com</strong> pro přehled změn.</div>
+
+        <div class="warning">⚠️ <strong>Copilot respektuje oprávnění</strong> – vidí jen to, k čemu máte přístup. Nemůže číst soubory kolegů, ke kterým nemáte práva.</div>
+        <div class="warning">⚠️ <strong>Vždy ověřujte výstupy</strong> – AI může chybovat. Zvláště u čísel, citací a odborných tvrzení kontrolujte zdroje.</div>
+    </div>
+
+</div>
+
+<div class="footer">
+    Jak začít s Microsoft 365 Copilot – FŽP ČZU | Zpracováno na základě 3 webinářů o M365 Copilot | 2026
+</div>
+
+</body>
+</html>
+
