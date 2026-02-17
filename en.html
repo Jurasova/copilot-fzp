@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Microsoft 365 Copilot – FENV CZU</title>
+    <style>
+        :root {
+            --primary: #006633;
+            --primary-dark: #004d26;
+            --primary-light: #e0f0e8;
+            --accent: #2e7d32;
+            --accent2: #0078d4;
+            --bg: #f5f7f5;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #555;
+            --border: #d4e4d4;
+            --warning-bg: #fff4ce;
+            --warning-border: #ffc107;
+            --tip-bg: #e6f4ea;
+            --tip-border: #34a853;
+            --role-vedec: #1565c0;
+            --role-pedagog: #6a1b9a;
+            --role-admin: #e65100;
+            --role-projekt: #00838f;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2e7d32 50%, #0078d4 100%);
+            color: white;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .header .institution {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .roles-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .intro-box {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+        }
+
+        .intro-box h2 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .intro-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .toc h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .toc-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .toc-group-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #999;
+            margin-top: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .toc-group-label:first-child {
+            margin-top: 0;
+        }
+
+        .toc-group-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .toc-group-items a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            padding: 0.55rem 1.5rem;
+            border: 1px solid #c8ddd0;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            text-decoration: none;
+            background: #f7fbf8;
+            transition: all 0.2s ease;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
+
+        .toc-group-items a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,102,51,0.2);
+            transform: translateY(-1px);
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+        }
+
+        .section h2 {
+            font-size: 1.45rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h2 .emoji { font-size: 1.5rem; }
+
+        .section h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-top: 1.3rem;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section ul, .section ol { padding: 0; }
+        .section ul { list-style: none; }
+
+        .section ul li {
+            padding: 0.35rem 0 0.35rem 1.4rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .section ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0.3rem;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section ol { padding-left: 1.5rem; }
+        .section ol li { padding: 0.3rem 0; font-size: 0.95rem; }
+
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .use-case-card {
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            font-size: 0.88rem;
+            border-left: 4px solid;
+        }
+
+        .use-case-card.vedec { background: #e3f2fd; border-color: var(--role-vedec); }
+        .use-case-card.pedagog { background: #f3e5f5; border-color: var(--role-pedagog); }
+        .use-case-card.admin { background: #fff3e0; border-color: var(--role-admin); }
+        .use-case-card.projekt { background: #e0f7fa; border-color: var(--role-projekt); }
+
+        .use-case-card .role-label {
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .use-case-card.vedec .role-label { color: var(--role-vedec); }
+        .use-case-card.pedagog .role-label { color: var(--role-pedagog); }
+        .use-case-card.admin .role-label { color: var(--role-admin); }
+        .use-case-card.projekt .role-label { color: var(--role-projekt); }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            font-size: 0.85rem;
+        }
+
+        .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+        .legend-dot.vedec { background: var(--role-vedec); }
+        .legend-dot.pedagog { background: var(--role-pedagog); }
+        .legend-dot.admin { background: var(--role-admin); }
+        .legend-dot.projekt { background: var(--role-projekt); }
+
+        .warning {
+            background: var(--warning-bg);
+            border-left: 4px solid var(--warning-border);
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .tip {
+            background: var(--tip-bg);
+            border-left: 4px solid var(--tip-border);
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .prompt-example {
+            background: #f8f9fa;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.88rem;
+            color: #333;
+        }
+
+        .prompt-example::before {
+            content: '💬 Prompt';
+            display: block;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--accent2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .header { padding: 2rem 1rem; }
+            .header h1 { font-size: 1.5rem; }
+            .container { padding: 1rem; }
+            .section { padding: 1.2rem; }
+            .use-cases { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; }
+            .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section { box-shadow: none; border: 1px solid var(--border); break-inside: avoid; }
+            .toc { break-after: page; }
+            .use-case-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="institution">Faculty of Environmental Sciences · Czech University of Life Sciences Prague</div>
+    <h1>Getting Started with Microsoft 365 Copilot</h1>
+    <div class="subtitle">A practical guide to using AI assistant for researchers, educators, administration and project management at FENV CZU</div>
+    <div class="roles-bar">
+        <span class="role-badge">🔬 Researchers</span>
+        <span class="role-badge">🎓 Educators</span>
+        <span class="role-badge">🏢 Administration</span>
+        <span class="role-badge">📐 Project Management</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Intro -->
+    <div class="intro-box">
+        <h2>🚀 What is Microsoft 365 Copilot?</h2>
+        <p>Microsoft 365 Copilot is an AI assistant integrated directly into the applications you already use – Outlook, Teams, Word, Excel, PowerPoint and more. It works <strong>exclusively with data within your Microsoft 365 environment</strong> (emails, files on OneDrive/SharePoint, meetings, chats) and respects all permissions – it can only see what you have access to.</p>
+        <p>At CZU you have access to M365 – this guide will show you <strong>how Copilot can specifically help you in your role</strong> at FENV.</p>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <strong>Example legend:</strong>
+        <div class="legend-item"><div class="legend-dot vedec"></div> Researcher</div>
+        <div class="legend-item"><div class="legend-dot pedagog"></div> Educator</div>
+        <div class="legend-item"><div class="legend-dot admin"></div> Administration</div>
+        <div class="legend-item"><div class="legend-dot projekt"></div> Project Management</div>
+    </div>
+
+    <!-- TOC -->
+    <nav class="toc">
+        <h2>Contents</h2>
+        <div class="toc-grid">
+
+            <div class="toc-group-label">AI Tools</div>
+            <div class="toc-group-items">
+                <a href="#copilot-chat">Copilot Chat</a>
+                <a href="#researcher">Researcher</a>
+                <a href="#analyst">Analyst</a>
+            </div>
+
+            <div class="toc-group-label">Office Apps</div>
+            <div class="toc-group-items">
+                <a href="#outlook">Outlook</a>
+                <a href="#teams">Teams</a>
+                <a href="#word">Word</a>
+                <a href="#excel">Excel</a>
+                <a href="#powerpoint">PowerPoint</a>
+                <a href="#forms">Forms</a>
+            </div>
+
+            <div class="toc-group-label">Creation & Automation</div>
+            <div class="toc-group-items">
+                <a href="#create">Create</a>
+                <a href="#workflows">Workflows</a>
+                <a href="#agents">Agents</a>
+            </div>
+
+            <div class="toc-group-label">Other</div>
+            <div class="toc-group-items">
+                <a href="#edge">Edge</a>
+                <a href="#mobile">Mobile</a>
+            </div>
+
+            <div class="toc-group-label">Guide</div>
+            <div class="toc-group-items">
+                <a href="#tips">How to Prompt</a>
+                <a href="#start">Getting Started</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ===== COPILOT CHAT ===== -->
+    <div class="section" id="copilot-chat">
+        <h2><span class="emoji">💬</span> Copilot Chat (Central Interface)</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">The main entry point to the AI assistant. Available at <strong>m365.cloud.microsoft/chat</strong> or directly in Teams. Ask questions, work with documents and call specialised agents here.</p>
+
+        <h3>Core Features</h3>
+        <ul>
+            <li><strong>Work mode</strong> – reads and works with organisational data: emails, files on OneDrive/SharePoint, calendar, Teams chats</li>
+            <li><strong>Web mode</strong> – searches the internet for information (academic sources, current trends)</li>
+            <li><strong>Slash (/)</strong> – reference a specific file, person, meeting, email or SharePoint directly in your prompt</li>
+            <li><strong>At sign (@)</strong> – invoke a specialised agent (Researcher, Analyst, etc.) directly in the conversation</li>
+        </ul>
+
+        <h3>Personalisation</h3>
+        <ul>
+            <li><strong>Custom Instructions</strong> – set up your profile: "I am a researcher in ecology, write in academic style, always in English"</li>
+            <li><strong>Memory</strong> – Copilot remembers important information: "Remember that I'm working on EU Horizon project…"</li>
+            <li><strong>Prompt Gallery</strong> – save frequently used prompts and share them with your department</li>
+            <li><strong>Scheduled Prompts</strong> – automatic execution (e.g. every Monday morning "summarise my new emails and tasks from last week")</li>
+        </ul>
+
+        <h3>Working with Content</h3>
+        <ul>
+            <li><strong>Notebooks</strong> – upload multiple documents for one project/grant and query across them</li>
+            <li><strong>Pages</strong> – collaborative text editing with AI (similar to Canvas in ChatGPT)</li>
+            <li><strong>Export outputs</strong> – from chat to Word, PowerPoint or Pages with one click</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "Summarise key points from /review-article.docx and suggest a discussion structure"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Based on /ecology-syllabus.docx, create 10 exam questions for students"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "Summarise my unread emails from the last 3 days and list action items"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "Compare /budget-2025.xlsx with /spending-Q4.xlsx and identify deviations"
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== RESEARCHER ===== -->
+    <div class="section" id="researcher">
+        <h2><span class="emoji">🔬</span> Researcher</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">A specialised agent for in-depth research – searches the internet and your work data, then produces a structured multi-page report.</p>
+
+        <ul>
+            <li><strong>Deep research on the web</strong> – in-depth investigation with multi-page output (literature reviews, state-of-the-art analysis)</li>
+            <li><strong>Deep research in work data</strong> – searches your emails, files, SharePoint sites, even far back in history</li>
+            <li>Generates <strong>structured reports, infographics, timelines</strong></li>
+            <li>Asks <strong>3 clarifying questions</strong> before starting – helps focus the research</li>
+            <li>Output can be exported directly to <strong>Word or PowerPoint</strong></li>
+            <li>Choose source: web only / work data only / specific SharePoint</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "@Researcher Conduct a review of current biomonitoring methods for urban air quality, focusing on studies from the last 5 years"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "@Researcher What innovative teaching methods in environmental sciences are used at European universities?"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "@Researcher Search my emails and files related to the LIFE+ project and create an overview of all deadlines and deliverables"
+            </div>
+        </div>
+
+        <div class="tip">💡 Researcher is ideal for preparing <strong>state-of-the-art</strong> chapters for grant proposals or thesis supervision.</div>
+    </div>
+
+    <!-- ===== ANALYST ===== -->
+    <div class="section" id="analyst">
+        <h2><span class="emoji">📊</span> Analyst</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">A data analysis agent – upload a dataset and it runs Python code in the background, creates charts and interpretations.</p>
+
+        <ul>
+            <li>Upload a dataset (CSV, Excel) → <strong>automatic analysis using Python</strong></li>
+            <li>Generate <strong>charts</strong> – static and interactive</li>
+            <li>Copilot programs the analysis, processes data and <strong>interprets results</strong></li>
+            <li>More capable for advanced analyses than standard Copilot in Excel</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "Analyse /pH-measurements.csv – calculate descriptive statistics, create a boxplot by site and identify outliers"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Analyse /exam-results-WS2025.xlsx – average grades by course, student pass rates, trends vs. last year"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "Analyse /grant-spending.xlsx – create a chart of monthly spending vs. plan and forecast to end of project"
+            </div>
+        </div>
+
+        <div class="warning">⚠️ For statistically rigorous analyses (publications), always verify results in R/SPSS – Copilot is excellent for exploration and quick overviews.</div>
+    </div>
+
+    <!-- ===== OUTLOOK ===== -->
+    <div class="section" id="outlook">
+        <h2><span class="emoji">📧</span> Outlook</h2>
+
+        <h3>Reading & Summarising</h3>
+        <ul>
+            <li><strong>Summarise long emails and threads</strong> – click "Summarise" to get key points from an entire conversation</li>
+            <li><strong>Catch up after leave/conference</strong> – "Summarise my most important emails from the last 2 weeks"</li>
+            <li><strong>Task identification</strong> – "What tasks have I received by email in the last month?"</li>
+        </ul>
+
+        <h3>Writing Emails</h3>
+        <ul>
+            <li><strong>Generate replies</strong> – describe your intent and Copilot writes the full email</li>
+            <li><strong>Translation</strong> – automatic translation into multiple languages (reply to international partner in English, CC colleague in Czech)</li>
+            <li><strong>Tone adjustment</strong> – formal (for the dean), factual (for colleagues), friendly (for students)</li>
+            <li><strong>Coaching</strong> – feedback: "Is my email clear? How will it be perceived?"</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "Write an email to the journal editor – thank them for reviews, summarise revisions made and request expedited processing. Formal tone."
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Reply to a student – explain why they didn't receive credit and suggest a consultation slot. Friendly but clear."
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "Write a bulk email to department heads – remind them of the deadline for annual report materials by March 15."
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "Write an email to project partners – summarise milestone status and request submission of reports by Feb 28."
+            </div>
+        </div>
+
+        <div class="warning">⚠️ Copilot in Outlook only works with emails within M365 – not with external accounts (Gmail, etc.)</div>
+    </div>
+
+    <!-- ===== TEAMS ===== -->
+    <div class="section" id="teams">
+        <h2><span class="emoji">🎥</span> Teams</h2>
+
+        <h3>Meetings</h3>
+        <ul>
+            <li><strong>Meeting transcription</strong> – automatic real-time transcription (Czech and English)</li>
+            <li><strong>Summarisation</strong> – after (or during) a meeting, Copilot extracts key topics and decisions</li>
+            <li><strong>Task extraction</strong> – automatically identifies who was assigned which task</li>
+            <li><strong>Joined late?</strong> – "What has been discussed so far? Do I have any action items?"</li>
+            <li><strong>Structured minutes</strong> – Copilot creates meeting minutes ready to share</li>
+        </ul>
+
+        <h3>Chats & Channels</h3>
+        <ul>
+            <li><strong>Chat summarisation</strong> – summary of activity in a department/project channel over the last 30 days</li>
+            <li>Copilot is available in all chats – just ask</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                After a project meeting: "Create minutes, organise by topic and list action items with responsible persons"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                After a department meeting: "Summarise decisions regarding curriculum changes and deadlines"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "Summarise the 'Organisation' channel in Teams – what was discussed in the last 2 weeks?"
+            </div>
+        </div>
+
+        <div class="tip">💡 Meeting data stays within the CZU environment – unlike external AI transcription tools (Otter, Fireflies, etc.).</div>
+    </div>
+
+    <!-- ===== WORD ===== -->
+    <div class="section" id="word">
+        <h2><span class="emoji">📝</span> Word</h2>
+
+        <h3>Document Creation</h3>
+        <ul>
+            <li><strong>Generate documents</strong> – article drafts, reports, project descriptions, reviews</li>
+            <li><strong>Create from source files</strong> – "Create a document based on /grant-materials.docx" (use slash to reference files)</li>
+            <li><strong>Fill in information</strong> – Copilot finds and adds missing details from the web and your files</li>
+        </ul>
+
+        <h3>Text Editing</h3>
+        <ul>
+            <li><strong>Edit paragraphs</strong> – shorten, simplify, make more academic or more accessible</li>
+            <li><strong>Change tone</strong> – formal for grants, accessible for students, popular science for the faculty website</li>
+            <li><strong>Translation</strong> – translate entire documents or selected passages</li>
+        </ul>
+
+        <h3>Special Features</h3>
+        <ul>
+            <li><strong>Audio-to-text transcription</strong> – Dictate function → upload audio recording → transcription in Word</li>
+            <li><strong>Summarise long documents</strong> – condense minutes, transcripts, reports into key points</li>
+            <li><strong>Extract text from images</strong> – upload a photo → Copilot extracts the text</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "Translate the abstract into Czech, preserve scientific terminology. Then create a popular science version for the faculty website."
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Based on /GIS-lecture.pptx, create a study guide in Word – structured text with key concepts"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "Draft an internal directive for business travel records based on /old-directive.docx – update according to new rules"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "Summarise /final-report-WP3.docx into a 1-page management summary"
+            </div>
+        </div>
+
+        <div class="tip">💡 <strong>Combo for researchers:</strong> conference recording → transcription in Word → Copilot summarisation = hours of recording processed in minutes.</div>
+    </div>
+
+    <!-- ===== EXCEL ===== -->
+    <div class="section" id="excel">
+        <h2><span class="emoji">📊</span> Excel</h2>
+
+        <h3>Data Analysis</h3>
+        <ul>
+            <li><strong>Summaries and overviews</strong> – totals, averages, overviews from thousands of rows using plain language</li>
+            <li><strong>Pivot tables</strong> – no configuration knowledge needed, just describe what you want</li>
+            <li><strong>Charts</strong> – pie, bar, scatter plots based on verbal description</li>
+        </ul>
+
+        <h3>Formula Assistance</h3>
+        <ul>
+            <li><strong>Help with formulas</strong> – "Write a formula that calculates the average only for rows where site = Suchdol"</li>
+            <li><strong>Formula explanation</strong> – click a cell and ask "What does this formula do?"</li>
+        </ul>
+
+        <h3>Advanced Features</h3>
+        <ul>
+            <li><strong>Financial models</strong> – budget projections (optimistic/pessimistic scenario)</li>
+            <li><strong>Excel translation</strong> – translate table contents while preserving structure</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "Create a pivot table – average pH values by site and season. Add a bar chart."
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "Calculate total business travel costs for 2025 by department and create a summary chart"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "Compare planned vs. actual budget by line item, highlight items with deviation &gt; 10%"
+            </div>
+        </div>
+
+        <div class="warning">⚠️ <strong>Data must be formatted as a table</strong> (Insert → Table) – Copilot won't work properly without this!</div>
+        <div class="warning">⚠️ For advanced statistical analyses (publications) → prefer <strong>Analyst agent</strong> or dedicated software (R, SPSS)</div>
+    </div>
+
+    <!-- ===== POWERPOINT ===== -->
+    <div class="section" id="powerpoint">
+        <h2><span class="emoji">📽️</span> PowerPoint</h2>
+
+        <h3>Creating Presentations</h3>
+        <ul>
+            <li><strong>From existing files</strong> – Copilot reads a Word document and creates a full presentation</li>
+            <li><strong>From Copilot Chat</strong> – via Researcher → output → PowerPoint</li>
+            <li><strong>From multiple sources</strong> – build sections based on different files</li>
+            <li><strong>Templates</strong> – Brand Center on SharePoint for corporate/faculty templates</li>
+        </ul>
+
+        <h3>Design & Visuals</h3>
+        <ul>
+            <li><strong>Visual design selection</strong> – organisational templates or Microsoft templates</li>
+            <li><strong>AI image generation</strong> directly in PowerPoint</li>
+            <li><strong>Automatic animations</strong> – transition effects</li>
+        </ul>
+
+        <h3>Editing & Translation</h3>
+        <ul>
+            <li><strong>Structure editing</strong> – preview topics, add/remove slides before generating</li>
+            <li><strong>Translate entire presentation</strong> – to any language, preserves design and images</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "Create a presentation from /biodiversity-article.docx – 15 slides for a conference, academic style"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Create a lecture presentation from /hydrology-textbook-ch3.docx – add visual diagrams and a summary at the end"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "Create a progress presentation from /progress-report-Q4.docx – translate to English for international partners"
+            </div>
+        </div>
+
+        <div class="tip">💡 Files must be on OneDrive or SharePoint (not local disk) – otherwise Copilot cannot see them.</div>
+    </div>
+
+    <!-- ===== FORMS ===== -->
+    <div class="section" id="forms">
+        <h2><span class="emoji">📋</span> Forms (Surveys & Quizzes)</h2>
+        <ul>
+            <li>Create forms and <strong>quizzes from Copilot Chat</strong> or directly in Forms</li>
+            <li>Generate tests <strong>from uploaded materials</strong> (textbooks, lecture notes)</li>
+            <li>Automatically fills in <strong>correct answers</strong></li>
+            <li>Option to <strong>shuffle questions and answers</strong> for multiple test variants</li>
+            <li>Unlimited number of variants from a single source material</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Create a test from /soil-science-ch5.docx – 20 questions, multiple choice, 4 options, mark correct answers"
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Create 3 different variants of this test with shuffled questions and answers"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "Create a registration form for FENV Open Day – name, email, field of interest, preferred time slot"
+            </div>
+        </div>
+
+        <div class="tip">💡 Perfect for educators – generate unlimited test variants from a single textbook chapter in minutes.</div>
+    </div>
+
+    <!-- ===== CREATE ===== -->
+    <div class="section" id="create">
+        <h2><span class="emoji">🖼️</span> Create (Images & Visual Content)</h2>
+        <ul>
+            <li>Generate <strong>images, infographics, stories, posters</strong></li>
+            <li><strong>Brand Kit</strong> – define corporate colours, logos, fonts → applied to outputs</li>
+            <li>Edit images, export to PowerPoint</li>
+            <li>✅ Available even in the <strong>free version</strong> of Copilot</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                "Create an infographic illustrating the carbon cycle for a climatology lecture"
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "Create a poster for the 'Sustainability in Practice' workshop – green colour palette, FENV logo"
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== WORKFLOWS ===== -->
+    <div class="section" id="workflows">
+        <h2><span class="emoji">⚙️</span> Workflows / Power Automate</h2>
+        <ul>
+            <li>Create automations by <strong>describing them in plain language</strong> – Copilot builds the flow for you</li>
+            <li>Triggers for emails, files, calendar events</li>
+            <li>Simplified Power Automate available directly in Teams</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                "When an email with an attachment arrives from the dean's office, save it to SharePoint and notify me in Teams"
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "7 days before each project milestone, send me a reminder and email the responsible team members"
+            </div>
+        </div>
+
+        <div class="tip">💡 Automation is often <strong>more reliable than AI</strong> – it always performs exactly the same way. Ideal for repetitive administrative processes.</div>
+    </div>
+
+    <!-- ===== AGENTS ===== -->
+    <div class="section" id="agents">
+        <h2><span class="emoji">🤖</span> Agents & Copilot Studio</h2>
+
+        <h3>Custom Agents</h3>
+        <ul>
+            <li>Create your own agent – pinned files (e.g. FENV internal regulations), knowledge base, instructions</li>
+            <li>Share with department colleagues or the entire faculty</li>
+            <li><strong>SharePoint agents</strong> – automatically available on every SharePoint site, answers questions about its content</li>
+        </ul>
+
+        <h3>Microsoft Agents</h3>
+        <ul>
+            <li><strong>Researcher</strong> – in-depth research (web + work data)</li>
+            <li><strong>Analyst</strong> – data analysis with Python</li>
+            <li><strong>Learning Agent</strong> – educational agent for learning from organisational materials</li>
+            <li><strong>Office Agent</strong> – combines PowerPoint, Excel, Word; designs outputs autonomously</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                Agent "FENV Regulations" – pinned internal norms, dean's directives → colleagues ask questions in natural language
+            </div>
+            <div class="use-case-card pedagog">
+                <div class="role-label">🎓 Educator</div>
+                Agent "Study Advisor" – pinned study plans, examination rules → students ask about study matters
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== EDGE ===== -->
+    <div class="section" id="edge">
+        <h2><span class="emoji">🌐</span> Edge (Browser)</h2>
+        <ul>
+            <li><strong>Summarise YouTube videos</strong> – reads subtitles and creates a summary (great for conference recordings)</li>
+            <li><strong>Work with PDFs</strong> – summarise and query PDF documents (articles, directives)</li>
+            <li><strong>Read web pages</strong> – ask questions about the content of an open page</li>
+        </ul>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                Open a journal article PDF in Edge → "Summarise the main findings and methodology of this paper"
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MOBILE ===== -->
+    <div class="section" id="mobile">
+        <h2><span class="emoji">📱</span> Mobile App</h2>
+        <ul>
+            <li>Copilot works in mobile versions of Outlook, Teams, Word and Excel</li>
+            <li><strong>M365 Copilot app</strong> – mobile interface with access to data, camera, voice mode</li>
+        </ul>
+
+        <div class="warning">⚠️ Download <strong>"M365 Copilot"</strong> (work version) from the app store, not the personal "Copilot" app.</div>
+
+        <div class="use-cases">
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                At a conference: photograph a poster → Copilot extracts text and summarises key points
+            </div>
+            <div class="use-case-card admin">
+                <div class="role-label">🏢 Administration</div>
+                On the go: "Summarise my last 3 emails from the vice-dean" – via voice on your phone
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TIPS ===== -->
+    <div class="section" id="tips">
+        <h2><span class="emoji">🛠️</span> How to Write Good Prompts</h2>
+        <p style="margin-bottom:1rem; font-size:0.95rem;">Output quality depends on input quality. Use the <strong>4-question framework</strong>:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 1.2rem;">
+            <div style="background: #e3f2fd; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">1️⃣</div>
+                <strong>WHAT</strong><br>
+                <span style="font-size: 0.85rem;">What do I need? (task)</span>
+            </div>
+            <div style="background: #e8f5e9; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">2️⃣</div>
+                <strong>WHY</strong><br>
+                <span style="font-size: 0.85rem;">Why do I need it? (context)</span>
+            </div>
+            <div style="background: #fff3e0; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">3️⃣</div>
+                <strong>HOW</strong><br>
+                <span style="font-size: 0.85rem;">How should it look? (format)</span>
+            </div>
+            <div style="background: #fce4ec; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5rem;">4️⃣</div>
+                <strong>FROM WHAT</strong><br>
+                <span style="font-size: 0.85rem;">Based on what? (sources)</span>
+            </div>
+        </div>
+
+        <h3>Good Prompt Example</h3>
+        <div class="prompt-example">
+            <strong>[WHAT]</strong> Create a summary of water quality measurement results.<br>
+            <strong>[WHY]</strong> I need it for an interim project report to the funding agency.<br>
+            <strong>[HOW]</strong> Structured text, max 2 pages, formal academic style, with a table of key parameters.<br>
+            <strong>[FROM WHAT]</strong> Based on /measurements-2025.xlsx and /methodology-WP2.docx
+        </div>
+
+        <h3>More Tips</h3>
+        <ul>
+            <li><strong>Have a conversation</strong> – you don't have to get it right the first time; refine, iterate, ask follow-ups</li>
+            <li><strong>Specify the language</strong> – "reply in English" / "odpověz česky" (otherwise Copilot may use the account language)</li>
+            <li><strong>Save proven prompts</strong> to the Prompt Gallery and share with colleagues</li>
+            <li><strong>Custom Instructions</strong> – set once, applies permanently (role, language, communication style)</li>
+            <li>At the end of a conversation: "Prepare a final one-shot prompt from this" → save and reuse</li>
+        </ul>
+
+        <div class="prompt-example">
+            <em>Custom Instructions example for a researcher at FENV:</em><br><br>
+            I am a researcher at the Faculty of Environmental Sciences, Czech University of Life Sciences Prague. My field is [field]. Communicate in academic but clear English. For Czech-specific terms, include the Czech equivalent. My key files are on SharePoint [name].
+        </div>
+    </div>
+
+    <!-- ===== START ===== -->
+    <div class="section" id="start">
+        <h2><span class="emoji">✅</span> Getting Started – Step by Step</h2>
+
+        <h3>1. Verify Access</h3>
+        <ul>
+            <li>Sign in to <strong><a href="https://m365.cloud.microsoft/chat" target="_blank" style="color: var(--accent2);">m365.cloud.microsoft/chat</a></strong> with your university account</li>
+            <li>If you see Copilot Chat – you have access ✅</li>
+            <li>If not – contact CZU IT department regarding licensing</li>
+        </ul>
+
+        <h3>2. Set Up Personalisation</h3>
+        <ol>
+            <li>In Copilot Chat, click the <strong>settings icon</strong> (gear wheel)</li>
+            <li>Go to <strong>Custom Instructions</strong></li>
+            <li>Fill in your profile: role, field, preferred language, communication style</li>
+        </ol>
+
+        <h3>3. Move Files to the Cloud</h3>
+        <ul>
+            <li>Copilot can only see <strong>OneDrive and SharePoint</strong> – not your local disk!</li>
+            <li>Move key documents to OneDrive or your department/project SharePoint</li>
+            <li>Name files meaningfully (not "final_v3_revised2.docx")</li>
+        </ul>
+
+        <h3>4. Try Your First Prompts</h3>
+        <ol>
+            <li>Open Copilot Chat → "Summarise my unread emails this week"</li>
+            <li>In Teams after a meeting → click "Summarise" in Copilot</li>
+            <li>In Word → open a document and click the Copilot icon in the ribbon</li>
+            <li>In Outlook → when writing an email, click "Draft with Copilot"</li>
+        </ol>
+
+        <h3>5. Expand Gradually</h3>
+        <ul>
+            <li>Start with <strong>one application</strong> you use most frequently</li>
+            <li>After a week, add another</li>
+            <li>Save proven prompts to your Gallery</li>
+            <li>Share experiences with colleagues in your department</li>
+        </ul>
+
+        <div class="tip">💡 <strong>Peak performance:</strong> morning (CET) – afternoons after 2 PM can be slow due to US traffic.</div>
+        <div class="tip">💡 <strong>Copilot is a moving target</strong> – Microsoft adds dozens of updates monthly. Follow <strong>supersimple365.com</strong> for change logs.</div>
+
+        <div class="warning">⚠️ <strong>Copilot respects permissions</strong> – it can only see what you have access to. It cannot read colleagues' files you don't have rights to.</div>
+        <div class="warning">⚠️ <strong>Always verify outputs</strong> – AI can make mistakes. Double-check numbers, citations and scientific claims against sources.</div>
+    </div>
+
+</div>
+
+<div class="footer">
+    Getting Started with Microsoft 365 Copilot – FENV CZU | Based on 3 M365 Copilot webinars | 2026
+</div>
+
+</body>
+</html>
+
