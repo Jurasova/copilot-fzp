@@ -453,6 +453,17 @@
             font-size: 0.9rem;
         }
 
+        /* Placeholder styling */
+        .placeholder {
+            font-style: italic;
+            background: #fff3cd;
+            padding: 1px 4px;
+            border-radius: 3px;
+            color: #856404;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
         /* Prompt example */
         .prompt-example {
             background: #f8f9fa;
@@ -522,6 +533,11 @@
     <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 0.7rem;">👆 Klikněte na roli pro přehled promptů</p>
 </div>
 
+<!-- Placeholder legend -->
+<div style="max-width: 1020px; margin: 1rem auto 0; padding: 0.7rem 1.2rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 6px; font-size: 0.88rem; color: #856404;">
+    💡 <strong>Tip:</strong> Žlutě zvýrazněné texty v <span class="placeholder">[hranatých závorkách]</span> jsou místa, která si nahraďte vlastními údaji — název souboru, datum, téma apod.
+</div>
+
 <!-- Role panels -->
 <div class="role-panel-wrapper" id="rolePanelWrapper">
 
@@ -534,15 +550,15 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card vedec">
                 <div class="app-label">💬 Copilot Chat</div>
-                „Z dokumentu článek-review.docx udělej: (1) 8–10 klíčových bodů, (2) 3 hlavní přínosy a 3 slabiny, (3) návrh osnovy diskuse (max 6 sekcí) pro interní seminář. Piš česky, v odrážkách."
+                „Z dokumentu <span class="placeholder">[článek-review.docx]</span> udělej: (1) 8–10 klíčových bodů, (2) 3 hlavní přínosy a 3 slabiny, (3) návrh osnovy diskuse (max 6 sekcí) pro interní seminář. Piš česky, v odrážkách."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">🔬 Researcher</div>
-                „Proveď rešerši metod biomonitoringu kvality ovzduší v městských oblastech (posledních 5 let). Vrať: (1) tabulku 8–12 studií (autor/rok, lokalita, biomarker/organismus, metoda, hlavní zjištění, limitace), (2) 5 trendů a 5 mezer ve výzkumu, (3) doporučení pro náš projekt (3–5 bodů). Uveď citace/zdroje."
+                „Proveď rešerši metod <span class="placeholder">[vaše téma výzkumu]</span> (posledních 5 let). Vrať: (1) tabulku 8–12 studií (autor/rok, lokalita, biomarker/organismus, metoda, hlavní zjištění, limitace), (2) 5 trendů a 5 mezer ve výzkumu, (3) doporučení pro náš projekt (3–5 bodů). Uveď citace/zdroje."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📊 Analyst</div>
-                „Načti data-mereni-pH.csv. Spočítej popisnou statistiku (n, průměr, medián, SD, min/max) pro každou lokalitu. Vytvoř boxplot pH podle lokality. Outliery definuj pomocí 1,5×IQR a vypiš je do tabulky (lokalita, datum/ID, hodnota). Nakonec stručně interpretuj možné příčiny (max 5 bodů)."
+                „Načti <span class="placeholder">[data-mereni-pH.csv]</span>. Spočítej popisnou statistiku (n, průměr, medián, SD, min/max) pro každou lokalitu. Vytvoř boxplot pH podle lokality. Outliery definuj pomocí 1,5×IQR a vypiš je do tabulky (lokalita, datum/ID, hodnota). Nakonec stručně interpretuj možné příčiny (max 5 bodů)."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📧 Outlook</div>
@@ -562,7 +578,7 @@
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📽️ PowerPoint</div>
-                „Z dokumentu článek-biodiverzita.docx vytvoř 15slajdovou konferenční prezentaci v angličtině. Struktura: Background, Gap, Methods, Results (3–4 slidy), Discussion, Limitations, Takeaways, Future work. Na slidu max 5 odrážek, přidej speaker notes (2–3 věty) a návrhy vizuálů/grafů."
+                „Z dokumentu <span class="placeholder">[článek-biodiverzita.docx]</span> vytvoř 15slajdovou konferenční prezentaci v angličtině. Struktura: Background, Gap, Methods, Results (3–4 slidy), Discussion, Limitations, Takeaways, Future work. Na slidu max 5 odrážek, přidej speaker notes (2–3 věty) a návrhy vizuálů/grafů."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">🌐 Edge</div>
@@ -584,15 +600,15 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card pedagog">
                 <div class="app-label">💬 Copilot Chat</div>
-                „Na základě dokumentu sylabus-ekologie.docx vytvoř 10 zkouškových otázek pro studenty. Rozděl je do 3 úrovní obtížnosti (základní/střední/pokročilé), u každé přidej stručnou očekávanou odpověď (2–3 věty) a označ, z jaké části sylabu vychází."
+                „Na základě dokumentu <span class="placeholder">[sylabus-ekologie.docx]</span> vytvoř 10 zkouškových otázek pro studenty. Rozděl je do 3 úrovní obtížnosti (základní/střední/pokročilé), u každé přidej stručnou očekávanou odpověď (2–3 věty) a označ, z jaké části sylabu vychází."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">🔬 Researcher</div>
-                „Zjisti, jaké inovativní metody výuky environmentálních věd používají evropské univerzity (preferuj zdroje z posledních 5 let). Vrať: (1) přehled 8–12 konkrétních metod s krátkým popisem, (2) tabulku příkladů (univerzita, kurz/program, metoda, proč funguje, odkaz na zdroj), (3) 5 doporučení, co lze snadno zavést i u nás. Uveď zdroje a odkazy."
+                „Zjisti, jaké inovativní metody výuky <span class="placeholder">[váš obor]</span> používají evropské univerzity (preferuj zdroje z posledních 5 let). Vrať: (1) přehled 8–12 konkrétních metod s krátkým popisem, (2) tabulku příkladů (univerzita, kurz/program, metoda, proč funguje, odkaz na zdroj), (3) 5 doporučení, co lze snadno zavést i u nás. Uveď zdroje a odkazy."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📊 Analyst</div>
-                „Analyzuj soubor výsledky-zkoušek-ZS2025.xlsx: spočítej průměrné skóre a míru úspěšnosti (podíl splnili/nesplnili) podle předmětu a vyučujícího. Zobraz trend proti minulému roku (pokud je ve stejném souboru nebo v přiložených datech). Identifikuj problematické oblasti (např. předměty s nízkou úspěšností) a navrhni 3–5 konkrétních opatření."
+                „Analyzuj soubor <span class="placeholder">[výsledky-zkoušek-ZS2025.xlsx]</span>: spočítej průměrné skóre a míru úspěšnosti (podíl splnili/nesplnili) podle předmětu a vyučujícího. Zobraz trend proti minulému roku (pokud je ve stejném souboru nebo v přiložených datech). Identifikuj problematické oblasti (např. předměty s nízkou úspěšností) a navrhni 3–5 konkrétních opatření."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📧 Outlook</div>
@@ -604,15 +620,15 @@
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📝 Word</div>
-                „Na základě prezentace přednáška-GIS.pptx vytvoř ve Wordu studijní materiál: strukturovaný text s nadpisy, klíčovými pojmy (tučně) a krátkými definicemi. Přidej 5 kontrolních otázek na závěr a mini-slovníček (10–15 pojmů). Zachovej odbornou terminologii a piš česky."
+                „Na základě prezentace <span class="placeholder">[přednáška-GIS.pptx]</span> vytvoř ve Wordu studijní materiál: strukturovaný text s nadpisy, klíčovými pojmy (tučně) a krátkými definicemi. Přidej 5 kontrolních otázek na závěr a mini-slovníček (10–15 pojmů). Zachovej odbornou terminologii a piš česky."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📽️ PowerPoint</div>
-                „Z dokumentu skripta-hydrologie-kap3.docx vytvoř prezentaci pro přednášku (12–15 slajdů). Struktura: cíle, hlavní pojmy, vysvětlení krok za krokem, příklad/úloha, shrnutí. Na každém slajdu max. 5 odrážek, přidej poznámky řečníka (2–3 věty) a návrhy vizuálů (schéma/graf/obrázek). Na konec přidej 1 shrnující slajd a 1 slajd s otázkami pro diskusi."
+                „Z dokumentu <span class="placeholder">[skripta-hydrologie-kap3.docx]</span> vytvoř prezentaci pro přednášku (12–15 slajdů). Struktura: cíle, hlavní pojmy, vysvětlení krok za krokem, příklad/úloha, shrnutí. Na každém slajdu max. 5 odrážek, přidej poznámky řečníka (2–3 věty) a návrhy vizuálů (schéma/graf/obrázek). Na konec přidej 1 shrnující slajd a 1 slajd s otázkami pro diskusi."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📋 Forms</div>
-                „Z dokumentu skripta-pedagogie-kap5.docx vytvoř test do Microsoft Forms: 20 otázek, převážně multiple-choice (4 možnosti), u každé označ správnou odpověď a přidej krátké vysvětlení proč je správně (1 věta). Zahrň mix: definice, aplikace na situaci, a 2–3 otázky na porozumění textu."
+                „Z dokumentu <span class="placeholder">[skripta-pedagogie-kap5.docx]</span> vytvoř test do Microsoft Forms: 20 otázek, převážně multiple-choice (4 možnosti), u každé označ správnou odpověď a přidej krátké vysvětlení proč je správně (1 věta). Zahrň mix: definice, aplikace na situaci, a 2–3 otázky na porozumění textu."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📋 Forms</div>
@@ -620,7 +636,7 @@
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">🖼️ Create</div>
-                „Vytvoř návrh infografiky ke koloběhu uhlíku pro přednášku z klimatologie: 6–8 hlavních uzlů (atmosféra, oceány, biosféra, půda, fosilní zdroje…), šipky toků s krátkými popisky, a 3 klíčová sdělení (takeaways). Navrhni barevné rozlišení kategorií a krátký textový doprovod (max. 80 slov)."
+                „Vytvoř návrh infografiky ke <span class="placeholder">[téma]</span> pro přednášku z <span class="placeholder">[název předmětu]</span>: 6–8 hlavních uzlů (atmosféra, oceány, biosféra, půda, fosilní zdroje…), šipky toků s krátkými popisky, a 3 klíčová sdělení (takeaways). Navrhni barevné rozlišení kategorií a krátký textový doprovod (max. 80 slov)."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">🤖 Agent</div>
@@ -638,35 +654,35 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card admin">
                 <div class="app-label">💬 Copilot Chat</div>
-                „Shrň mi nepřečtené e-maily za poslední 3 dny. Výstup dej do tabulky: Odesílatel | Předmět | 1větné shrnutí | Požadovaná akce | Deadline | Priorita (Vysoká/Střední/Nízká). Na závěr vytvoř seznam úkolů (max 10) seřazený podle priority a termínu."
+                „Shrň mi nepřečtené e-maily za poslední <span class="placeholder">[počet dní]</span>. Výstup dej do tabulky: Odesílatel | Předmět | 1větné shrnutí | Požadovaná akce | Deadline | Priorita (Vysoká/Střední/Nízká). Na závěr vytvoř seznam úkolů (max 10) seřazený podle priority a termínu."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📧 Outlook</div>
-                „Napiš hromadný e-mail vedoucím kateder: připomeň termín odevzdání podkladů pro výroční zprávu (do 15. 3.). Uveď přesně, co mají dodat (seznam bodů), kam to nahrát/poslat, a kontakt pro dotazy. Tón profesionální a stručný, přidej jasný předmět a výzvu k potvrzení přijetí."
+                „Napiš hromadný e-mail vedoucím kateder: připomeň termín odevzdání podkladů pro výroční zprávu (do <span class="placeholder">[datum]</span>). Uveď přesně, co mají dodat (seznam bodů), kam to nahrát/poslat, a kontakt pro dotazy. Tón profesionální a stručný, přidej jasný předmět a výzvu k potvrzení přijetí."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">🎥 Teams</div>
-                „Shrň aktivitu v kanálu ‚Organizace' za poslední 2 týdny. Vrať: (1) 8–12 hlavních témat, (2) klíčová rozhodnutí, (3) otevřené otázky, (4) úkoly s vlastníkem a termínem (pokud jsou zmíněny), (5) odkazy na nejdůležitější zprávy/vlákna."
+                „Shrň aktivitu v kanálu <span class="placeholder">[název kanálu]</span> za poslední <span class="placeholder">[období]</span>. Vrať: (1) 8–12 hlavních témat, (2) klíčová rozhodnutí, (3) otevřené otázky, (4) úkoly s vlastníkem a termínem (pokud jsou zmíněny), (5) odkazy na nejdůležitější zprávy/vlákna."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📝 Word</div>
-                „Z dokumentu stará-smernice.docx vytvoř aktualizovanou interní směrnici pro evidenci služebních cest. Zachovej strukturu, ale: sjednoť pojmy, doplň jasné kroky procesu (kdo–co–kdy), přidej sekci ‚Nejčastější chyby' a ‚Checklist před odesláním'. Změny vyznač (sledování změn nebo sekce ‚Co je nové' na začátku)."
+                „Z dokumentu <span class="placeholder">[stará-smernice.docx]</span> vytvoř aktualizovanou interní směrnici pro <span class="placeholder">[téma směrnice]</span>. Zachovej strukturu, ale: sjednoť pojmy, doplň jasné kroky procesu (kdo–co–kdy), přidej sekci ‚Nejčastější chyby' a ‚Checklist před odesláním'. Změny vyznač (sledování změn nebo sekce ‚Co je nové' na začátku)."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📊 Excel</div>
-                „V souboru s cestovními náklady spočítej celkové náklady na služební cesty za rok 2025 podle kateder a měsíců. Vytvoř přehlednou kontingenční tabulku (katedra × měsíc) a doplň graf pro porovnání kateder. Na závěr vypiš Top 5 nejvyšších nákladových položek (katedra, cesta/účel, částka) a krátký komentář, kde jsou hlavní driver-y."
+                „V souboru s cestovními náklady spočítej celkové náklady na služební cesty za rok <span class="placeholder">[rok]</span> podle kateder a měsíců. Vytvoř přehlednou kontingenční tabulku (katedra × měsíc) a doplň graf pro porovnání kateder. Na závěr vypiš Top 5 nejvyšších nákladových položek (katedra, cesta/účel, částka) a krátký komentář, kde jsou hlavní driver-y."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📋 Forms</div>
-                „Vytvoř formulář pro přihlášení na Den otevřených dveří FŽP: jméno, e-mail (povinné), telefon (volitelné), typ zájmu/okruh (výběr), preferovaný čas (výběr), souhlas se zpracováním osobních údajů (povinné). Přidej potvrzovací zprávu po odeslání a automatický e-mail účastníkovi se shrnutím odpovědí."
+                „Vytvoř formulář pro přihlášení na <span class="placeholder">[název akce]</span>: jméno, e-mail (povinné), telefon (volitelné), typ zájmu/okruh (výběr), preferovaný čas (výběr), souhlas se zpracováním osobních údajů (povinné). Přidej potvrzovací zprávu po odeslání a automatický e-mail účastníkovi se shrnutím odpovědí."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">🖼️ Create</div>
-                „Navrhni plakát pro workshop ‚Udržitelnost v praxi'. Použij zelenou barevnou paletu a místo pro logo FŽP. Dodej 3 varianty layoutu (minimalistická / dynamická / formální), každá s: titulek, datum/čas, místo, krátký popis (max 40 slov), řečníci (placeholder), registrace (QR placeholder). Text česky, připraveno pro tisk A3."
+                „Navrhni plakát pro workshop <span class="placeholder">[název workshopu]</span>. Použij zelenou barevnou paletu a místo pro logo FŽP. Dodej 3 varianty layoutu (minimalistická / dynamická / formální), každá s: titulek, datum/čas, místo, krátký popis (max 40 slov), řečníci (placeholder), registrace (QR placeholder). Text česky, připraveno pro tisk A3."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">⚙️ Workflows</div>
-                „Vytvoř automatizaci: když přijde e-mail od děkanátu s přílohou, ulož přílohu do SharePointu do složky ‚Děkanát/Inbox' (podsložka podle roku a měsíce) a pošli do Teams notifikaci do kanálu ‚Organizace' s informací: odesílatel, předmět, název souboru, odkaz na uložený soubor. Ošetři duplicity (stejný název → přidej datum/čas)."
+                „Vytvoř automatizaci: když přijde e-mail od <span class="placeholder">[odesílatel]</span> s přílohou, ulož přílohu do SharePointu do složky <span class="placeholder">[cílová složka]</span> (podsložka podle roku a měsíce) a pošli do Teams notifikaci do kanálu <span class="placeholder">[název kanálu]</span> s informací: odesílatel, předmět, název souboru, odkaz na uložený soubor. Ošetři duplicity (stejný název → přidej datum/čas)."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">🤖 Agent</div>
@@ -674,7 +690,7 @@
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📱 Mobil</div>
-                „Shrň mi poslední 3 e-maily od proděkana. U každého řekni: o co jde (1 věta), co po mně chce, a do kdy. Pak z toho vytvoř krátký seznam úkolů, které můžu rovnou odškrtnout."
+                „Shrň mi poslední 3 e-maily od <span class="placeholder">[jméno/funkce]</span>. U každého řekni: o co jde (1 věta), co po mně chce, a do kdy. Pak z toho vytvoř krátký seznam úkolů, které můžu rovnou odškrtnout."
             </div>
         </div>
     </div>
@@ -688,23 +704,23 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card projekt">
                 <div class="app-label">💬 Copilot Chat</div>
-                „Porovnej soubory rozpočet-2025.xlsx a čerpání-Q4.xlsx. Vytvoř přehled odchylek po položkách a měsících: plán, skutečnost, rozdíl, % odchylka. Zvýrazni odchylky > 10 % a u každé navrhni pravděpodobnou příčinu (1 věta) a doporučený krok. Na závěr dej 5 největších rizik pro rozpočet."
+                „Porovnej soubory <span class="placeholder">[rozpočet-2025.xlsx]</span> a <span class="placeholder">[čerpání-Q4.xlsx]</span>. Vytvoř přehled odchylek po položkách a měsících: plán, skutečnost, rozdíl, % odchylka. Zvýrazni odchylky > 10 % a u každé navrhni pravděpodobnou příčinu (1 věta) a doporučený krok. Na závěr dej 5 největších rizik pro rozpočet."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">🔬 Researcher</div>
-                „Prohledej moje e-maily a projektové soubory k projektu LIFE a sestav kompletní přehled termínů a deliverables. Výstup dej do tabulky: Deliverable | Popis | Termín | Odpovědná osoba | Stav (OK/Riziko/Zpoždění) | Další krok. Na konci vypiš kritické termíny v následujících 30 dnech a navrhni plán kontroly (co zkontrolovat kdy)."
+                „Prohledej moje e-maily a projektové soubory k projektu <span class="placeholder">[název projektu]</span> a sestav kompletní přehled termínů a deliverables. Výstup dej do tabulky: Deliverable | Popis | Termín | Odpovědná osoba | Stav (OK/Riziko/Zpoždění) | Další krok. Na konci vypiš kritické termíny v následujících 30 dnech a navrhni plán kontroly (co zkontrolovat kdy)."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📊 Analyst</div>
-                „Analyzuj čerpání-grantu.xlsx a vytvoř: (1) graf čerpání po měsících vs. plán, (2) prognózu čerpání do konce projektu (uveď předpoklady), (3) odhad rizika přečerpání/nedočerpání a jeho velikost. Identifikuj 3 hlavní odchylky a napiš doporučení, co upravit (rozpočet, harmonogram, alokace)."
+                „Analyzuj <span class="placeholder">[čerpání-grantu.xlsx]</span> a vytvoř: (1) graf čerpání po měsících vs. plán, (2) prognózu čerpání do konce projektu (uveď předpoklady), (3) odhad rizika přečerpání/nedočerpání a jeho velikost. Identifikuj 3 hlavní odchylky a napiš doporučení, co upravit (rozpočet, harmonogram, alokace)."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📧 Outlook</div>
-                „Napiš e-mail partnerům projektu v angličtině: stručně shrň stav plnění milníků, upozorni na nejbližší termíny a požádej o zaslání reportů do 28. 2. Přidej jasný seznam požadovaných podkladů, formát (max 5 odrážek) a požadavek na potvrzení termínu. Tón profesionální, ale partnerský."
+                „Napiš e-mail partnerům projektu v angličtině: stručně shrň stav plnění milníků, upozorni na nejbližší termíny a požádej o zaslání reportů do <span class="placeholder">[datum]</span> Přidej jasný seznam požadovaných podkladů, formát (max 5 odrážek) a požadavek na potvrzení termínu. Tón profesionální, ale partnerský."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📝 Word</div>
-                „Z dokumentu závěrečná-zpráva-WP3.docx vytvoř 1stránkové management summary. Struktura: Cíl WP3, co bylo dodáno (3–5 bodů), klíčové výsledky a dopad, odchylky a jejich důvody, rizika a mitigace, doporučení/next steps. Piš věcně, bez detailů metodiky."
+                „Z dokumentu <span class="placeholder">[závěrečná-zpráva-WP3.docx]</span> vytvoř 1stránkové management summary. Struktura: Cíl <span class="placeholder">[číslo WP]</span>, co bylo dodáno (3–5 bodů), klíčové výsledky a dopad, odchylky a jejich důvody, rizika a mitigace, doporučení/next steps. Piš věcně, bez detailů metodiky."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📊 Excel</div>
@@ -712,7 +728,7 @@
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📽️ PowerPoint</div>
-                „Z dokumentu progress-report-Q4.docx vytvoř prezentaci průběžných výsledků projektu (10–12 slidů) pro zahraniční partnery v angličtině. Struktura: Context & objectives, Progress vs plan, Key results (3–4 slidy), Risks & mitigations, Budget snapshot, Next quarter plan, Requests to partners. Na slidu max 5 odrážek, přidej speaker notes a návrhy vizuálů (timeline, KPI, graf čerpání)."
+                „Z dokumentu <span class="placeholder">[progress-report-Q4.docx]</span> vytvoř prezentaci průběžných výsledků projektu (10–12 slidů) pro zahraniční partnery v angličtině. Struktura: Context & objectives, Progress vs plan, Key results (3–4 slidy), Risks & mitigations, Budget snapshot, Next quarter plan, Requests to partners. Na slidu max 5 odrážek, přidej speaker notes a návrhy vizuálů (timeline, KPI, graf čerpání)."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">⚙️ Workflows</div>
@@ -816,19 +832,19 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Vědec</div>
-                „Z dokumentu článek-review.docx udělej: (1) 8–10 klíčových bodů, (2) 3 hlavní přínosy a 3 slabiny, (3) návrh osnovy diskuse (max 6 sekcí) pro interní seminář. Piš česky, v odrážkách."
+                „Z dokumentu <span class="placeholder">[článek-review.docx]</span> udělej: (1) 8–10 klíčových bodů, (2) 3 hlavní přínosy a 3 slabiny, (3) návrh osnovy diskuse (max 6 sekcí) pro interní seminář. Piš česky, v odrážkách."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
-                „Na základě dokumentu sylabus-ekologie.docx vytvoř 10 zkouškových otázek pro studenty. Rozděl je do 3 úrovní obtížnosti (základní/střední/pokročilé), u každé přidej stručnou očekávanou odpověď (2–3 věty) a označ, z jaké části sylabu vychází."
+                „Na základě dokumentu <span class="placeholder">[sylabus-ekologie.docx]</span> vytvoř 10 zkouškových otázek pro studenty. Rozděl je do 3 úrovní obtížnosti (základní/střední/pokročilé), u každé přidej stručnou očekávanou odpověď (2–3 věty) a označ, z jaké části sylabu vychází."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Shrň mi nepřečtené e-maily za poslední 3 dny. Výstup dej do tabulky: Odesílatel | Předmět | 1větné shrnutí | Požadovaná akce | Deadline | Priorita (Vysoká/Střední/Nízká). Na závěr vytvoř seznam úkolů (max 10) seřazený podle priority a termínu."
+                „Shrň mi nepřečtené e-maily za poslední <span class="placeholder">[počet dní]</span>. Výstup dej do tabulky: Odesílatel | Předmět | 1větné shrnutí | Požadovaná akce | Deadline | Priorita (Vysoká/Střední/Nízká). Na závěr vytvoř seznam úkolů (max 10) seřazený podle priority a termínu."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
-                „Porovnej soubory rozpočet-2025.xlsx a čerpání-Q4.xlsx. Vytvoř přehled odchylek po položkách a měsících: plán, skutečnost, rozdíl, % odchylka. Zvýrazni odchylky &gt; 10 % a u každé navrhni pravděpodobnou příčinu (1 věta) a doporučený krok. Na závěr dej 5 největších rizik pro rozpočet."
+                „Porovnej soubory <span class="placeholder">[rozpočet-2025.xlsx]</span> a <span class="placeholder">[čerpání-Q4.xlsx]</span>. Vytvoř přehled odchylek po položkách a měsících: plán, skutečnost, rozdíl, % odchylka. Zvýrazni odchylky &gt; 10 % a u každé navrhni pravděpodobnou příčinu (1 věta) a doporučený krok. Na závěr dej 5 největších rizik pro rozpočet."
             </div>
         </div>
     </div>
@@ -850,15 +866,15 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Vědec</div>
-                „Proveď rešerši metod biomonitoringu kvality ovzduší v městských oblastech (posledních 5 let). Vrať: (1) tabulku 8–12 studií (autor/rok, lokalita, biomarker/organismus, metoda, hlavní zjištění, limitace), (2) 5 trendů a 5 mezer ve výzkumu, (3) doporučení pro náš projekt (3–5 bodů). Uveď citace/zdroje."
+                „Proveď rešerši metod <span class="placeholder">[vaše téma výzkumu]</span> (posledních 5 let). Vrať: (1) tabulku 8–12 studií (autor/rok, lokalita, biomarker/organismus, metoda, hlavní zjištění, limitace), (2) 5 trendů a 5 mezer ve výzkumu, (3) doporučení pro náš projekt (3–5 bodů). Uveď citace/zdroje."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
-                „Zjisti, jaké inovativní metody výuky environmentálních věd používají evropské univerzity (preferuj zdroje z posledních 5 let). Vrať: (1) přehled 8–12 konkrétních metod s krátkým popisem, (2) tabulku příkladů (univerzita, kurz/program, metoda, proč funguje, odkaz na zdroj), (3) 5 doporučení, co lze snadno zavést i u nás. Uveď zdroje a odkazy."
+                „Zjisti, jaké inovativní metody výuky <span class="placeholder">[váš obor]</span> používají evropské univerzity (preferuj zdroje z posledních 5 let). Vrať: (1) přehled 8–12 konkrétních metod s krátkým popisem, (2) tabulku příkladů (univerzita, kurz/program, metoda, proč funguje, odkaz na zdroj), (3) 5 doporučení, co lze snadno zavést i u nás. Uveď zdroje a odkazy."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
-                „Prohledej moje e-maily a projektové soubory k projektu LIFE a sestav kompletní přehled termínů a deliverables. Výstup dej do tabulky: Deliverable | Popis | Termín | Odpovědná osoba | Stav (OK/Riziko/Zpoždění) | Další krok. Na konci vypiš kritické termíny v následujících 30 dnech a navrhni plán kontroly (co zkontrolovat kdy)."
+                „Prohledej moje e-maily a projektové soubory k projektu <span class="placeholder">[název projektu]</span> a sestav kompletní přehled termínů a deliverables. Výstup dej do tabulky: Deliverable | Popis | Termín | Odpovědná osoba | Stav (OK/Riziko/Zpoždění) | Další krok. Na konci vypiš kritické termíny v následujících 30 dnech a navrhni plán kontroly (co zkontrolovat kdy)."
             </div>
         </div>
 
@@ -880,15 +896,15 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Vědec</div>
-                „Načti data-mereni-pH.csv. Spočítej popisnou statistiku (n, průměr, medián, SD, min/max) pro každou lokalitu. Vytvoř boxplot pH podle lokality. Outliery definuj pomocí 1,5×IQR a vypiš je do tabulky (lokalita, datum/ID, hodnota). Nakonec stručně interpretuj možné příčiny (max 5 bodů)."
+                „Načti <span class="placeholder">[data-mereni-pH.csv]</span>. Spočítej popisnou statistiku (n, průměr, medián, SD, min/max) pro každou lokalitu. Vytvoř boxplot pH podle lokality. Outliery definuj pomocí 1,5×IQR a vypiš je do tabulky (lokalita, datum/ID, hodnota). Nakonec stručně interpretuj možné příčiny (max 5 bodů)."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
-                „Analyzuj soubor výsledky-zkoušek-ZS2025.xlsx: spočítej průměrné skóre a míru úspěšnosti (podíl splnili/nesplnili) podle předmětu a vyučujícího. Zobraz trend proti minulému roku (pokud je ve stejném souboru nebo v přiložených datech). Identifikuj problematické oblasti (např. předměty s nízkou úspěšností) a navrhni 3–5 konkrétních opatření."
+                „Analyzuj soubor <span class="placeholder">[výsledky-zkoušek-ZS2025.xlsx]</span>: spočítej průměrné skóre a míru úspěšnosti (podíl splnili/nesplnili) podle předmětu a vyučujícího. Zobraz trend proti minulému roku (pokud je ve stejném souboru nebo v přiložených datech). Identifikuj problematické oblasti (např. předměty s nízkou úspěšností) a navrhni 3–5 konkrétních opatření."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
-                „Analyzuj čerpání-grantu.xlsx a vytvoř: (1) graf čerpání po měsících vs. plán, (2) prognózu čerpání do konce projektu (uveď předpoklady), (3) odhad rizika přečerpání/nedočerpání a jeho velikost. Identifikuj 3 hlavní odchylky a napiš doporučení, co upravit (rozpočet, harmonogram, alokace)."
+                „Analyzuj <span class="placeholder">[čerpání-grantu.xlsx]</span> a vytvoř: (1) graf čerpání po měsících vs. plán, (2) prognózu čerpání do konce projektu (uveď předpoklady), (3) odhad rizika přečerpání/nedočerpání a jeho velikost. Identifikuj 3 hlavní odchylky a napiš doporučení, co upravit (rozpočet, harmonogram, alokace)."
             </div>
         </div>
 
@@ -902,7 +918,7 @@
         <h3>Čtení a shrnutí</h3>
         <ul>
             <li><strong>Shrnutí dlouhých e-mailů a vláken</strong> – klikněte „Shrnout" a získejte klíčové body z celé konverzace</li>
-            <li><strong>Rekapitulace po dovolené/konferenci</strong> – „Shrň mi nejdůležitější e-maily za poslední 2 týdny"</li>
+            <li><strong>Rekapitulace po dovolené/konferenci</strong> – „Shrň mi nejdůležitější e-maily za poslední <span class="placeholder">[období]</span>"</li>
             <li><strong>Identifikace úkolů</strong> – „Jaké úkoly jsem dostal/a e-mailem za poslední měsíc?"</li>
         </ul>
 
@@ -925,11 +941,11 @@
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Napiš hromadný e-mail vedoucím kateder: připomeň termín odevzdání podkladů pro výroční zprávu (do 15. 3.). Uveď přesně, co mají dodat (seznam bodů), kam to nahrát/poslat, a kontakt pro dotazy. Tón profesionální a stručný, přidej jasný předmět a výzvu k potvrzení přijetí."
+                „Napiš hromadný e-mail vedoucím kateder: připomeň termín odevzdání podkladů pro výroční zprávu (do <span class="placeholder">[datum]</span>). Uveď přesně, co mají dodat (seznam bodů), kam to nahrát/poslat, a kontakt pro dotazy. Tón profesionální a stručný, přidej jasný předmět a výzvu k potvrzení přijetí."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
-                „Napiš e-mail partnerům projektu v angličtině: stručně shrň stav plnění milníků, upozorni na nejbližší termíny a požádej o zaslání reportů do 28. 2. Přidej jasný seznam požadovaných podkladů, formát (max 5 odrážek) a požadavek na potvrzení termínu. Tón profesionální, ale partnerský."
+                „Napiš e-mail partnerům projektu v angličtině: stručně shrň stav plnění milníků, upozorni na nejbližší termíny a požádej o zaslání reportů do <span class="placeholder">[datum]</span> Přidej jasný seznam požadovaných podkladů, formát (max 5 odrážek) a požadavek na potvrzení termínu. Tón profesionální, ale partnerský."
             </div>
         </div>
 
@@ -966,7 +982,7 @@
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Shrň aktivitu v kanálu ‚Organizace' za poslední 2 týdny. Vrať: (1) 8–12 hlavních témat, (2) klíčová rozhodnutí, (3) otevřené otázky, (4) úkoly s vlastníkem a termínem (pokud jsou zmíněny), (5) odkazy na nejdůležitější zprávy/vlákna."
+                „Shrň aktivitu v kanálu <span class="placeholder">[název kanálu]</span> za poslední <span class="placeholder">[období]</span>. Vrať: (1) 8–12 hlavních témat, (2) klíčová rozhodnutí, (3) otevřené otázky, (4) úkoly s vlastníkem a termínem (pokud jsou zmíněny), (5) odkazy na nejdůležitější zprávy/vlákna."
             </div>
         </div>
 
@@ -1005,15 +1021,15 @@
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
-                „Na základě prezentace přednáška-GIS.pptx vytvoř ve Wordu studijní materiál: strukturovaný text s nadpisy, klíčovými pojmy (tučně) a krátkými definicemi. Přidej 5 kontrolních otázek na závěr a mini-slovníček (10–15 pojmů). Zachovej odbornou terminologii a piš česky."
+                „Na základě prezentace <span class="placeholder">[přednáška-GIS.pptx]</span> vytvoř ve Wordu studijní materiál: strukturovaný text s nadpisy, klíčovými pojmy (tučně) a krátkými definicemi. Přidej 5 kontrolních otázek na závěr a mini-slovníček (10–15 pojmů). Zachovej odbornou terminologii a piš česky."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Z dokumentu stará-smernice.docx vytvoř aktualizovanou interní směrnici pro evidenci služebních cest. Zachovej strukturu, ale: sjednoť pojmy, doplň jasné kroky procesu (kdo–co–kdy), přidej sekci ‚Nejčastější chyby' a ‚Checklist před odesláním'. Změny vyznač (sledování změn nebo sekce ‚Co je nové' na začátku)."
+                „Z dokumentu <span class="placeholder">[stará-smernice.docx]</span> vytvoř aktualizovanou interní směrnici pro <span class="placeholder">[téma směrnice]</span>. Zachovej strukturu, ale: sjednoť pojmy, doplň jasné kroky procesu (kdo–co–kdy), přidej sekci ‚Nejčastější chyby' a ‚Checklist před odesláním'. Změny vyznač (sledování změn nebo sekce ‚Co je nové' na začátku)."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
-                „Z dokumentu závěrečná-zpráva-WP3.docx vytvoř 1stránkové management summary. Struktura: Cíl WP3, co bylo dodáno (3–5 bodů), klíčové výsledky a dopad, odchylky a jejich důvody, rizika a mitigace, doporučení/next steps. Piš věcně, bez detailů metodiky."
+                „Z dokumentu <span class="placeholder">[závěrečná-zpráva-WP3.docx]</span> vytvoř 1stránkové management summary. Struktura: Cíl <span class="placeholder">[číslo WP]</span>, co bylo dodáno (3–5 bodů), klíčové výsledky a dopad, odchylky a jejich důvody, rizika a mitigace, doporučení/next steps. Piš věcně, bez detailů metodiky."
             </div>
         </div>
 
@@ -1050,7 +1066,7 @@
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „V souboru s cestovními náklady spočítej celkové náklady na služební cesty za rok 2025 podle kateder a měsíců. Vytvoř přehlednou kontingenční tabulku (katedra × měsíc) a doplň graf pro porovnání kateder. Na závěr vypiš Top 5 nejvyšších nákladových položek (katedra, cesta/účel, částka) a krátký komentář, kde jsou hlavní driver-y."
+                „V souboru s cestovními náklady spočítej celkové náklady na služební cesty za rok <span class="placeholder">[rok]</span> podle kateder a měsíců. Vytvoř přehlednou kontingenční tabulku (katedra × měsíc) a doplň graf pro porovnání kateder. Na závěr vypiš Top 5 nejvyšších nákladových položek (katedra, cesta/účel, částka) a krátký komentář, kde jsou hlavní driver-y."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
@@ -1090,15 +1106,15 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Vědec</div>
-                „Z dokumentu článek-biodiverzita.docx vytvoř 15slajdovou konferenční prezentaci v angličtině. Struktura: Background, Gap, Methods, Results (3–4 slidy), Discussion, Limitations, Takeaways, Future work. Na slidu max 5 odrážek, přidej speaker notes (2–3 věty) a návrhy vizuálů/grafů."
+                „Z dokumentu <span class="placeholder">[článek-biodiverzita.docx]</span> vytvoř 15slajdovou konferenční prezentaci v angličtině. Struktura: Background, Gap, Methods, Results (3–4 slidy), Discussion, Limitations, Takeaways, Future work. Na slidu max 5 odrážek, přidej speaker notes (2–3 věty) a návrhy vizuálů/grafů."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
-                „Z dokumentu skripta-hydrologie-kap3.docx vytvoř prezentaci pro přednášku (12–15 slajdů). Struktura: cíle, hlavní pojmy, vysvětlení krok za krokem, příklad/úloha, shrnutí. Na každém slajdu max. 5 odrážek, přidej poznámky řečníka (2–3 věty) a návrhy vizuálů (schéma/graf/obrázek). Na konec přidej 1 shrnující slajd a 1 slajd s otázkami pro diskusi."
+                „Z dokumentu <span class="placeholder">[skripta-hydrologie-kap3.docx]</span> vytvoř prezentaci pro přednášku (12–15 slajdů). Struktura: cíle, hlavní pojmy, vysvětlení krok za krokem, příklad/úloha, shrnutí. Na každém slajdu max. 5 odrážek, přidej poznámky řečníka (2–3 věty) a návrhy vizuálů (schéma/graf/obrázek). Na konec přidej 1 shrnující slajd a 1 slajd s otázkami pro diskusi."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
-                „Z dokumentu progress-report-Q4.docx vytvoř prezentaci průběžných výsledků projektu (10–12 slidů) pro zahraniční partnery v angličtině. Struktura: Context &amp; objectives, Progress vs plan, Key results (3–4 slidy), Risks &amp; mitigations, Budget snapshot, Next quarter plan, Requests to partners. Na slidu max 5 odrážek, přidej speaker notes a návrhy vizuálů (timeline, KPI, graf čerpání)."
+                „Z dokumentu <span class="placeholder">[progress-report-Q4.docx]</span> vytvoř prezentaci průběžných výsledků projektu (10–12 slidů) pro zahraniční partnery v angličtině. Struktura: Context &amp; objectives, Progress vs plan, Key results (3–4 slidy), Risks &amp; mitigations, Budget snapshot, Next quarter plan, Requests to partners. Na slidu max 5 odrážek, přidej speaker notes a návrhy vizuálů (timeline, KPI, graf čerpání)."
             </div>
         </div>
 
@@ -1119,7 +1135,7 @@
         <div class="use-cases">
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
-                „Z dokumentu skripta-pedagogie-kap5.docx vytvoř test do Microsoft Forms: 20 otázek, převážně multiple-choice (4 možnosti), u každé označ správnou odpověď a přidej krátké vysvětlení proč je správně (1 věta). Zahrň mix: definice, aplikace na situaci, a 2–3 otázky na porozumění textu."
+                „Z dokumentu <span class="placeholder">[skripta-pedagogie-kap5.docx]</span> vytvoř test do Microsoft Forms: 20 otázek, převážně multiple-choice (4 možnosti), u každé označ správnou odpověď a přidej krátké vysvětlení proč je správně (1 věta). Zahrň mix: definice, aplikace na situaci, a 2–3 otázky na porozumění textu."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
@@ -1127,7 +1143,7 @@
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Vytvoř formulář pro přihlášení na Den otevřených dveří FŽP: jméno, e-mail (povinné), telefon (volitelné), typ zájmu/okruh (výběr), preferovaný čas (výběr), souhlas se zpracováním osobních údajů (povinné). Přidej potvrzovací zprávu po odeslání a automatický e-mail účastníkovi se shrnutím odpovědí."
+                „Vytvoř formulář pro přihlášení na <span class="placeholder">[název akce]</span>: jméno, e-mail (povinné), telefon (volitelné), typ zájmu/okruh (výběr), preferovaný čas (výběr), souhlas se zpracováním osobních údajů (povinné). Přidej potvrzovací zprávu po odeslání a automatický e-mail účastníkovi se shrnutím odpovědí."
             </div>
         </div>
 
@@ -1147,11 +1163,11 @@
         <div class="use-cases">
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Pedagog</div>
-                „Vytvoř návrh infografiky ke koloběhu uhlíku pro přednášku z klimatologie: 6–8 hlavních uzlů (atmosféra, oceány, biosféra, půda, fosilní zdroje…), šipky toků s krátkými popisky, a 3 klíčová sdělení (takeaways). Navrhni barevné rozlišení kategorií a krátký textový doprovod (max. 80 slov)."
+                „Vytvoř návrh infografiky ke <span class="placeholder">[téma]</span> pro přednášku z <span class="placeholder">[název předmětu]</span>: 6–8 hlavních uzlů (atmosféra, oceány, biosféra, půda, fosilní zdroje…), šipky toků s krátkými popisky, a 3 klíčová sdělení (takeaways). Navrhni barevné rozlišení kategorií a krátký textový doprovod (max. 80 slov)."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Navrhni plakát pro workshop ‚Udržitelnost v praxi'. Použij zelenou barevnou paletu a místo pro logo FŽP. Dodej 3 varianty layoutu (minimalistická / dynamická / formální), každá s: titulek, datum/čas, místo, krátký popis (max 40 slov), řečníci (placeholder), registrace (QR placeholder). Text česky, připraveno pro tisk A3."
+                „Navrhni plakát pro workshop <span class="placeholder">[název workshopu]</span>. Použij zelenou barevnou paletu a místo pro logo FŽP. Dodej 3 varianty layoutu (minimalistická / dynamická / formální), každá s: titulek, datum/čas, místo, krátký popis (max 40 slov), řečníci (placeholder), registrace (QR placeholder). Text česky, připraveno pro tisk A3."
             </div>
         </div>
     </div>
@@ -1168,7 +1184,7 @@
         <div class="use-cases">
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Vytvoř automatizaci: když přijde e-mail od děkanátu s přílohou, ulož přílohu do SharePointu do složky ‚Děkanát/Inbox' (podsložka podle roku a měsíce) a pošli do Teams notifikaci do kanálu ‚Organizace' s informací: odesílatel, předmět, název souboru, odkaz na uložený soubor. Ošetři duplicity (stejný název → přidej datum/čas)."
+                „Vytvoř automatizaci: když přijde e-mail od <span class="placeholder">[odesílatel]</span> s přílohou, ulož přílohu do SharePointu do složky <span class="placeholder">[cílová složka]</span> (podsložka podle roku a měsíce) a pošli do Teams notifikaci do kanálu <span class="placeholder">[název kanálu]</span> s informací: odesílatel, předmět, název souboru, odkaz na uložený soubor. Ošetři duplicity (stejný název → přidej datum/čas)."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Projektový management</div>
@@ -1244,7 +1260,7 @@
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administrativa</div>
-                „Shrň mi poslední 3 e-maily od proděkana. U každého řekni: o co jde (1 věta), co po mně chce, a do kdy. Pak z toho vytvoř krátký seznam úkolů, které můžu rovnou odškrtnout."
+                „Shrň mi poslední 3 e-maily od <span class="placeholder">[jméno/funkce]</span>. U každého řekni: o co jde (1 věta), co po mně chce, a do kdy. Pak z toho vytvoř krátký seznam úkolů, které můžu rovnou odškrtnout."
             </div>
         </div>
     </div>
