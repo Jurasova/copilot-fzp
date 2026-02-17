@@ -85,7 +85,108 @@
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            user-select: none;
         }
+
+        .role-badge:hover, .role-badge.active {
+            background: rgba(255,255,255,0.45);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .role-badge.active {
+            border-color: white;
+        }
+
+        /* Role detail panel */
+        .role-panel-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: linear-gradient(180deg, #004d26 0%, var(--bg) 100%);
+        }
+
+        .role-panel-wrapper.open {
+            max-height: 2000px;
+        }
+
+        .role-panel {
+            display: none;
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 2rem;
+        }
+
+        .role-panel.visible {
+            display: block;
+        }
+
+        .role-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .role-panel-header h2 {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .role-panel-close {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .role-panel-close:hover {
+            background: rgba(255,255,255,0.35);
+        }
+
+        .role-prompt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .role-prompt-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .role-prompt-card .app-label {
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .role-prompt-card.vedec { border-color: var(--role-vedec); }
+        .role-prompt-card.vedec .app-label { color: var(--role-vedec); }
+        .role-prompt-card.pedagog { border-color: var(--role-pedagog); }
+        .role-prompt-card.pedagog .app-label { color: var(--role-pedagog); }
+        .role-prompt-card.admin { border-color: var(--role-admin); }
+        .role-prompt-card.admin .app-label { color: var(--role-admin); }
+        .role-prompt-card.projekt { border-color: var(--role-projekt); }
+        .role-prompt-card.projekt .app-label { color: var(--role-projekt); }
 
         /* Container */
         .container {
@@ -413,11 +514,213 @@
     <h1>Jak začít s Microsoft 365 Copilot</h1>
     <div class="subtitle">Praktický průvodce využitím AI asistenta pro vědce, pedagogy, administrativu a projektový management na FŽP ČZU</div>
     <div class="roles-bar">
-        <span class="role-badge">🔬 Vědci</span>
-        <span class="role-badge">🎓 Pedagogové</span>
-        <span class="role-badge">🏢 Administrativa</span>
-        <span class="role-badge">📐 Projektový management</span>
+        <span class="role-badge" data-role="vedec">🔬 Vědci</span>
+        <span class="role-badge" data-role="pedagog">🎓 Pedagogové</span>
+        <span class="role-badge" data-role="admin">🏢 Administrativa</span>
+        <span class="role-badge" data-role="projekt">📐 Projektový management</span>
     </div>
+    <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 0.7rem;">👆 Klikněte na roli pro přehled promptů</p>
+</div>
+
+<!-- Role panels -->
+<div class="role-panel-wrapper" id="rolePanelWrapper">
+
+    <!-- VĚDCI -->
+    <div class="role-panel" id="panel-vedec">
+        <div class="role-panel-header">
+            <h2>🔬 Přehled promptů pro vědce a výzkumníky</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card vedec">
+                <div class="app-label">💬 Copilot Chat</div>
+                „Shrň mi klíčové body z /článek-review.docx a navrhni strukturu diskuse"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">🔬 Researcher</div>
+                „@Researcher Proveď rešerši aktuálních metod biomonitoringu kvality ovzduší v městských oblastech, zaměř se na studie z posledních 5 let"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📊 Analyst</div>
+                „Analyzuj /data-mereni-pH.csv – spočítej základní statistiky, vytvoř boxplot podle lokalit a identifikuj outliers"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📧 Outlook</div>
+                „Napiš e-mail editorovi časopisu – poděkuj za recenze, shrň provedené revize a požádej o zrychlení procesu. Formální, anglicky."
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">🎥 Teams</div>
+                Po projektové schůzce: „Vytvoř zápis ze schůzky, rozděl podle témat a vypiš action items s odpovědnými osobami"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📝 Word</div>
+                „Přepiš abstract do češtiny, zachovej odbornou terminologii. Pak vytvoř populárně-vědeckou verzi pro web fakulty."
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📊 Excel</div>
+                „Vytvoř kontingenční tabulku – průměrné hodnoty pH podle lokalit a ročních období. Přidej sloupcový graf."
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📽️ PowerPoint</div>
+                „Vytvoř prezentaci z /článek-biodiverzita.docx – 15 slajdů pro konferenci, akademický styl, anglicky"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">🌐 Edge</div>
+                Otevřete PDF článku v Edge → „Shrň hlavní zjištění a metodologii tohoto článku"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📱 Mobil</div>
+                Na konferenci: vyfoťte poster → Copilot extrahuje text a shrne klíčové body
+            </div>
+        </div>
+    </div>
+
+    <!-- PEDAGOGOVÉ -->
+    <div class="role-panel" id="panel-pedagog">
+        <div class="role-panel-header">
+            <h2>🎓 Přehled promptů pro pedagogy</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">💬 Copilot Chat</div>
+                „Na základě /sylabus-ekologie.docx vytvoř 10 zkušebních otázek pro studenty"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🔬 Researcher</div>
+                „@Researcher Jaké inovativní metody výuky environmentálních věd se používají na evropských univerzitách?"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📊 Analyst</div>
+                „Analyzuj /výsledky-zkoušek-ZS2025.xlsx – průměrné známky podle předmětů, úspěšnost studentů, trend oproti minulému roku"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📧 Outlook</div>
+                „Odpověz studentovi – vysvětli, proč nedostal zápočet, a navrhni termín konzultace. Vstřícně, ale jasně."
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🎥 Teams</div>
+                Po poradě katedry: „Shrň, co se rozhodlo ohledně úprav studijních plánů a jaké jsou termíny"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📝 Word</div>
+                „Na základě /přednáška-GIS.pptx vytvoř studijní materiál ve Wordu – strukturovaný text s klíčovými pojmy"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📽️ PowerPoint</div>
+                „Vytvoř prezentaci pro přednášku z /skripta-hydrologie-kap3.docx – přidej vizuální schémata a shrnutí na konci"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📋 Forms</div>
+                „Vytvoř test z /skripta-pedologie-kap5.docx – 20 otázek, multiple choice, 4 možnosti, vyznač správné odpovědi"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📋 Forms</div>
+                „Vytvoř 3 různé varianty tohoto testu s přeházenými otázkami a odpověďmi"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🖼️ Create</div>
+                „Vytvoř infografiku znázorňující koloběh uhlíku pro přednášku z klimatologie"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🤖 Agent</div>
+                Agent „Studijní poradce" – přípnuté studijní plány, pravidla studia → studenti se ptají na studijní záležitosti
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMINISTRATIVA -->
+    <div class="role-panel" id="panel-admin">
+        <div class="role-panel-header">
+            <h2>🏢 Přehled promptů pro administrativu</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card admin">
+                <div class="app-label">💬 Copilot Chat</div>
+                „Shrň mé nepřečtené e-maily za poslední 3 dny a vypiš úkoly"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📧 Outlook</div>
+                „Napiš hromadný e-mail vedoucím kateder – připomeň termín odevzdání podkladů pro výroční zprávu do 15.3."
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">🎥 Teams</div>
+                „Shrň kanál ‚Organizace' v Teams – co se řešilo za poslední 2 týdny?"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📝 Word</div>
+                „Vytvoř návrh vnitřní směrnice pro evidenci služebních cest na základě /stará-směrnice.docx – aktualizuj podle nových pravidel"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📊 Excel</div>
+                „Spočítej celkové náklady na služební cesty za rok 2025 podle kateder a vytvoř přehledový graf"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📋 Forms</div>
+                „Vytvoř formulář pro přihlášení na Den otevřených dveří FŽP – jméno, e-mail, obor zájmu, preferovaný čas"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">🖼️ Create</div>
+                „Vytvoř plakát pro workshop ‚Udržitelnost v praxi' – zelená barevná paleta, logo FŽP"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">⚙️ Workflows</div>
+                „Když přijde e-mail s přílohou od děkanátu, ulož přílohu do SharePointu a pošli mi notifikaci v Teams"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">🤖 Agent</div>
+                Agent „Předpisy FŽP" – přípnuté vnitřní normy, SZŘ, opatření děkana → kolegové se ptají přirozeným jazykem
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📱 Mobil</div>
+                Na cestě: „Shrň mi poslední 3 e-maily od proděkana" – hlasem přes telefon
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJEKTOVÝ MANAGEMENT -->
+    <div class="role-panel" id="panel-projekt">
+        <div class="role-panel-header">
+            <h2>📐 Přehled promptů pro projektový management</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card projekt">
+                <div class="app-label">💬 Copilot Chat</div>
+                „Porovnej /rozpočet-2025.xlsx s /čerpání-Q4.xlsx a identifikuj odchylky"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">🔬 Researcher</div>
+                „@Researcher Prohledej moje e-maily a soubory k projektu LIFE+ a vytvoř přehled všech termínů a deliverables"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📊 Analyst</div>
+                „Analyzuj /čerpání-grantu.xlsx – vytvoř graf čerpání po měsících vs. plán a prognózu do konce projektu"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📧 Outlook</div>
+                „Napiš e-mail partnerům projektu v angličtině – shrň stav plnění milníků a požádej o zaslání reportů do 28.2."
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📝 Word</div>
+                „Shrň /závěrečná-zpráva-WP3.docx do 1 strany pro management summary"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📊 Excel</div>
+                „Porovnej plánovaný a skutečný rozpočet po položkách, zvýrazni položky s odchylkou > 10 %"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📽️ PowerPoint</div>
+                „Vytvoř prezentaci průběžných výsledků projektu z /progress-report-Q4.docx – přelož do angličtiny pro zahraniční partnery"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">⚙️ Workflows</div>
+                „7 dní před každým milníkem projektu mi pošli připomínku a e-mail odpovědným řešitelům"
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="container">
@@ -1050,6 +1353,42 @@
 <div class="footer">
     Jak začít s Microsoft 365 Copilot – FŽP ČZU | Zpracováno na základě 3 webinářů o M365 Copilot | 2026
 </div>
+
+<script>
+    document.querySelectorAll('.role-badge').forEach(function(badge) {
+        badge.addEventListener('click', function() {
+            var role = this.getAttribute('data-role');
+            var wrapper = document.getElementById('rolePanelWrapper');
+            var isAlreadyActive = this.classList.contains('active');
+
+            // Reset all badges and panels
+            document.querySelectorAll('.role-badge').forEach(function(b) { b.classList.remove('active'); });
+            document.querySelectorAll('.role-panel').forEach(function(p) { p.classList.remove('visible'); });
+
+            if (isAlreadyActive) {
+                // Close panel
+                wrapper.classList.remove('open');
+            } else {
+                // Open panel for this role
+                this.classList.add('active');
+                document.getElementById('panel-' + role).classList.add('visible');
+                wrapper.classList.add('open');
+                // Scroll to panel
+                setTimeout(function() {
+                    wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+    });
+
+    function closePanel() {
+        document.querySelectorAll('.role-badge').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.role-panel').forEach(function(p) { p.classList.remove('visible'); });
+        document.getElementById('rolePanelWrapper').classList.remove('open');
+        // Scroll back to top
+        document.querySelector('.header').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
 
 </body>
 </html>

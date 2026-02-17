@@ -83,7 +83,107 @@
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            user-select: none;
         }
+
+        .role-badge:hover, .role-badge.active {
+            background: rgba(255,255,255,0.45);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .role-badge.active {
+            border-color: white;
+        }
+
+        .role-panel-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: linear-gradient(180deg, #004d26 0%, var(--bg) 100%);
+        }
+
+        .role-panel-wrapper.open {
+            max-height: 2000px;
+        }
+
+        .role-panel {
+            display: none;
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 2rem;
+        }
+
+        .role-panel.visible {
+            display: block;
+        }
+
+        .role-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .role-panel-header h2 {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .role-panel-close {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .role-panel-close:hover {
+            background: rgba(255,255,255,0.35);
+        }
+
+        .role-prompt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .role-prompt-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .role-prompt-card .app-label {
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .role-prompt-card.vedec { border-color: var(--role-vedec); }
+        .role-prompt-card.vedec .app-label { color: var(--role-vedec); }
+        .role-prompt-card.pedagog { border-color: var(--role-pedagog); }
+        .role-prompt-card.pedagog .app-label { color: var(--role-pedagog); }
+        .role-prompt-card.admin { border-color: var(--role-admin); }
+        .role-prompt-card.admin .app-label { color: var(--role-admin); }
+        .role-prompt-card.projekt { border-color: var(--role-projekt); }
+        .role-prompt-card.projekt .app-label { color: var(--role-projekt); }
 
         .container {
             max-width: 1020px;
@@ -355,11 +455,213 @@
     <h1>Getting Started with Microsoft 365 Copilot</h1>
     <div class="subtitle">A practical guide to using AI assistant for researchers, educators, administration and project management at FES CULS</div>
     <div class="roles-bar">
-        <span class="role-badge">🔬 Researchers</span>
-        <span class="role-badge">🎓 Educators</span>
-        <span class="role-badge">🏢 Administration</span>
-        <span class="role-badge">📐 Project Management</span>
+        <span class="role-badge" data-role="vedec">🔬 Researchers</span>
+        <span class="role-badge" data-role="pedagog">🎓 Educators</span>
+        <span class="role-badge" data-role="admin">🏢 Administration</span>
+        <span class="role-badge" data-role="projekt">📐 Project Management</span>
     </div>
+    <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 0.7rem;">👆 Click a role to see prompt examples</p>
+</div>
+
+<!-- Role panels -->
+<div class="role-panel-wrapper" id="rolePanelWrapper">
+
+    <!-- RESEARCHERS -->
+    <div class="role-panel" id="panel-vedec">
+        <div class="role-panel-header">
+            <h2>🔬 Prompt Overview for Researchers</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card vedec">
+                <div class="app-label">💬 Copilot Chat</div>
+                "Summarise key points from /review-article.docx and suggest a discussion structure"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">🔬 Researcher</div>
+                "@Researcher Conduct a review of current biomonitoring methods for urban air quality, focusing on studies from the last 5 years"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📊 Analyst</div>
+                "Analyse /pH-measurements.csv – calculate descriptive statistics, create a boxplot by site and identify outliers"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📧 Outlook</div>
+                "Write an email to the journal editor – thank them for reviews, summarise revisions made and request expedited processing. Formal tone."
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">🎥 Teams</div>
+                After a project meeting: "Create minutes, organise by topic and list action items with responsible persons"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📝 Word</div>
+                "Translate the abstract into Czech, preserve scientific terminology. Then create a popular science version for the faculty website."
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📊 Excel</div>
+                "Create a pivot table – average pH values by site and season. Add a bar chart."
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📽️ PowerPoint</div>
+                "Create a presentation from /biodiversity-article.docx – 15 slides for a conference, academic style"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">🌐 Edge</div>
+                Open a journal article PDF in Edge → "Summarise the main findings and methodology of this paper"
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📱 Mobile</div>
+                At a conference: photograph a poster → Copilot extracts text and summarises key points
+            </div>
+        </div>
+    </div>
+
+    <!-- EDUCATORS -->
+    <div class="role-panel" id="panel-pedagog">
+        <div class="role-panel-header">
+            <h2>🎓 Prompt Overview for Educators</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">💬 Copilot Chat</div>
+                "Based on /ecology-syllabus.docx, create 10 exam questions for students"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🔬 Researcher</div>
+                "@Researcher What innovative teaching methods in environmental sciences are used at European universities?"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📊 Analyst</div>
+                "Analyse /exam-results-WS2025.xlsx – average grades by course, student pass rates, trends vs. last year"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📧 Outlook</div>
+                "Reply to a student – explain why they didn't receive credit and suggest a consultation slot. Friendly but clear."
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🎥 Teams</div>
+                After a department meeting: "Summarise decisions regarding curriculum changes and deadlines"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📝 Word</div>
+                "Based on /GIS-lecture.pptx, create a study guide in Word – structured text with key concepts"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📽️ PowerPoint</div>
+                "Create a lecture presentation from /hydrology-textbook-ch3.docx – add visual diagrams and a summary at the end"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📋 Forms</div>
+                "Create a test from /soil-science-ch5.docx – 20 questions, multiple choice, 4 options, mark correct answers"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">📋 Forms</div>
+                "Create 3 different variants of this test with shuffled questions and answers"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🖼️ Create</div>
+                "Create an infographic illustrating the carbon cycle for a climatology lecture"
+            </div>
+            <div class="role-prompt-card pedagog">
+                <div class="app-label">🤖 Agent</div>
+                Agent "Study Advisor" – pinned study plans, examination rules → students ask about study matters
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMINISTRATION -->
+    <div class="role-panel" id="panel-admin">
+        <div class="role-panel-header">
+            <h2>🏢 Prompt Overview for Administration</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card admin">
+                <div class="app-label">💬 Copilot Chat</div>
+                "Summarise my unread emails from the last 3 days and list action items"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📧 Outlook</div>
+                "Write a bulk email to department heads – remind them of the deadline for annual report materials by March 15."
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">🎥 Teams</div>
+                "Summarise the 'Organisation' channel in Teams – what was discussed in the last 2 weeks?"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📝 Word</div>
+                "Draft an internal directive for business travel records based on /old-directive.docx – update according to new rules"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📊 Excel</div>
+                "Calculate total business travel costs for 2025 by department and create a summary chart"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📋 Forms</div>
+                "Create a registration form for FES Open Day – name, email, field of interest, preferred time slot"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">🖼️ Create</div>
+                "Create a poster for the 'Sustainability in Practice' workshop – green colour palette, FES logo"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">⚙️ Workflows</div>
+                "When an email with an attachment arrives from the dean's office, save it to SharePoint and notify me in Teams"
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">🤖 Agent</div>
+                Agent "FES Regulations" – pinned internal norms, dean's directives → colleagues ask questions in natural language
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">📱 Mobile</div>
+                On the go: "Summarise my last 3 emails from the vice-dean" – via voice on your phone
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT MANAGEMENT -->
+    <div class="role-panel" id="panel-projekt">
+        <div class="role-panel-header">
+            <h2>📐 Prompt Overview for Project Management</h2>
+            <button class="role-panel-close" onclick="closePanel()">✕</button>
+        </div>
+        <div class="role-prompt-grid">
+            <div class="role-prompt-card projekt">
+                <div class="app-label">💬 Copilot Chat</div>
+                "Compare /budget-2025.xlsx with /spending-Q4.xlsx and identify deviations"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">🔬 Researcher</div>
+                "@Researcher Search my emails and files related to the LIFE+ project and create an overview of all deadlines and deliverables"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📊 Analyst</div>
+                "Analyse /grant-spending.xlsx – create a chart of monthly spending vs. plan and forecast to end of project"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📧 Outlook</div>
+                "Write an email to project partners – summarise milestone status and request submission of reports by Feb 28."
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📝 Word</div>
+                "Summarise /final-report-WP3.docx into a 1-page management summary"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📊 Excel</div>
+                "Compare planned vs. actual budget by line item, highlight items with deviation > 10%"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📽️ PowerPoint</div>
+                "Create a progress presentation from /progress-report-Q4.docx – translate to English for international partners"
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">⚙️ Workflows</div>
+                "7 days before each project milestone, send me a reminder and email the responsible team members"
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="container">
@@ -992,6 +1294,37 @@
 <div class="footer">
     Getting Started with Microsoft 365 Copilot – FES CULS | Based on 3 M365 Copilot webinars | 2026
 </div>
+
+<script>
+    document.querySelectorAll('.role-badge').forEach(function(badge) {
+        badge.addEventListener('click', function() {
+            var role = this.getAttribute('data-role');
+            var wrapper = document.getElementById('rolePanelWrapper');
+            var isAlreadyActive = this.classList.contains('active');
+
+            document.querySelectorAll('.role-badge').forEach(function(b) { b.classList.remove('active'); });
+            document.querySelectorAll('.role-panel').forEach(function(p) { p.classList.remove('visible'); });
+
+            if (isAlreadyActive) {
+                wrapper.classList.remove('open');
+            } else {
+                this.classList.add('active');
+                document.getElementById('panel-' + role).classList.add('visible');
+                wrapper.classList.add('open');
+                setTimeout(function() {
+                    wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+    });
+
+    function closePanel() {
+        document.querySelectorAll('.role-badge').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.role-panel').forEach(function(p) { p.classList.remove('visible'); });
+        document.getElementById('rolePanelWrapper').classList.remove('open');
+        document.querySelector('.header').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
 
 </body>
 </html>
