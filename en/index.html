@@ -36,6 +36,7 @@
             line-height: 1.65;
         }
 
+        /* Header */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, #2e7d32 50%, #0078d4 100%);
             color: white;
@@ -64,6 +65,7 @@
             margin: 0 auto;
         }
 
+        /* Role badges */
         .roles-bar {
             display: flex;
             justify-content: center;
@@ -98,6 +100,7 @@
             border-color: white;
         }
 
+        /* Role detail panel */
         .role-panel-wrapper {
             max-height: 0;
             overflow: hidden;
@@ -185,12 +188,14 @@
         .role-prompt-card.projekt { border-color: var(--role-projekt); }
         .role-prompt-card.projekt .app-label { color: var(--role-projekt); }
 
+        /* Container */
         .container {
             max-width: 1020px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
 
+        /* Intro box */
         .intro-box {
             background: var(--card-bg);
             border-radius: 12px;
@@ -211,6 +216,7 @@
             margin-bottom: 0.5rem;
         }
 
+        /* TOC */
         .toc {
             background: var(--card-bg);
             border-radius: 16px;
@@ -280,6 +286,19 @@
             transform: translateY(-1px);
         }
 
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.92rem;
+            padding: 0.25rem 0;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: var(--primary); }
+        .toc a .emoji { margin-right: 0.3rem; }
+
+        /* Section Cards */
         .section {
             background: var(--card-bg);
             border-radius: 12px;
@@ -310,6 +329,7 @@
         }
 
         .section ul, .section ol { padding: 0; }
+
         .section ul { list-style: none; }
 
         .section ul li {
@@ -327,9 +347,16 @@
             font-size: 1.1rem;
         }
 
-        .section ol { padding-left: 1.5rem; }
-        .section ol li { padding: 0.3rem 0; font-size: 0.95rem; }
+        .section ol {
+            padding-left: 1.5rem;
+        }
 
+        .section ol li {
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Use-case examples per role */
         .use-cases {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -344,10 +371,25 @@
             border-left: 4px solid;
         }
 
-        .use-case-card.vedec { background: #e3f2fd; border-color: var(--role-vedec); }
-        .use-case-card.pedagog { background: #f3e5f5; border-color: var(--role-pedagog); }
-        .use-case-card.admin { background: #fff3e0; border-color: var(--role-admin); }
-        .use-case-card.projekt { background: #e0f7fa; border-color: var(--role-projekt); }
+        .use-case-card.vedec {
+            background: #e3f2fd;
+            border-color: var(--role-vedec);
+        }
+
+        .use-case-card.pedagog {
+            background: #f3e5f5;
+            border-color: var(--role-pedagog);
+        }
+
+        .use-case-card.admin {
+            background: #fff3e0;
+            border-color: var(--role-admin);
+        }
+
+        .use-case-card.projekt {
+            background: #e0f7fa;
+            border-color: var(--role-projekt);
+        }
 
         .use-case-card .role-label {
             font-weight: 700;
@@ -362,6 +404,7 @@
         .use-case-card.admin .role-label { color: var(--role-admin); }
         .use-case-card.projekt .role-label { color: var(--role-projekt); }
 
+        /* Legend */
         .legend {
             display: flex;
             flex-wrap: wrap;
@@ -374,13 +417,24 @@
             font-size: 0.85rem;
         }
 
-        .legend-item { display: flex; align-items: center; gap: 0.4rem; }
-        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
         .legend-dot.vedec { background: var(--role-vedec); }
         .legend-dot.pedagog { background: var(--role-pedagog); }
         .legend-dot.admin { background: var(--role-admin); }
         .legend-dot.projekt { background: var(--role-projekt); }
 
+        /* Warning & Tip boxes */
         .warning {
             background: var(--warning-bg);
             border-left: 4px solid var(--warning-border);
@@ -399,6 +453,18 @@
             font-size: 0.9rem;
         }
 
+        /* Placeholder styling */
+        .placeholder {
+            font-style: italic;
+            background: #fff3cd;
+            padding: 1px 4px;
+            border-radius: 3px;
+            color: #856404;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        /* Prompt example */
         .prompt-example {
             background: #f8f9fa;
             border: 1px solid var(--border);
@@ -408,6 +474,7 @@
             font-family: 'Consolas', 'Courier New', monospace;
             font-size: 0.88rem;
             color: #333;
+            position: relative;
         }
 
         .prompt-example::before {
@@ -422,6 +489,7 @@
             margin-bottom: 0.4rem;
         }
 
+        /* Footer */
         .footer {
             text-align: center;
             padding: 2rem;
@@ -431,11 +499,13 @@
             margin-top: 1rem;
         }
 
+        /* Responsive */
         @media (max-width: 600px) {
             .header { padding: 2rem 1rem; }
             .header h1 { font-size: 1.5rem; }
             .container { padding: 1rem; }
             .section { padding: 1.2rem; }
+            .toc-grid { grid-template-columns: 1fr; }
             .use-cases { grid-template-columns: 1fr; }
         }
 
@@ -475,43 +545,47 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card vedec">
                 <div class="app-label">💬 Copilot Chat</div>
-                "Summarise key points from /review-article.docx and suggest a discussion structure"
+                "From document <span class="placeholder">[review-article.docx]</span> create: (1) 8–10 key points, (2) 3 main strengths and 3 weaknesses, (3) a proposed discussion outline (max 6 sections) for an internal seminar. Write in bullet points."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">🔬 Researcher</div>
-                "@Researcher Conduct a review of current biomonitoring methods for urban air quality, focusing on studies from the last 5 years"
+                "Conduct a literature review on <span class="placeholder">[your research topic]</span> methods (last 5 years). Return: (1) a table of 8–12 studies (author/year, location, biomarker/organism, method, key findings, limitations), (2) 5 trends and 5 research gaps, (3) recommendations for our project (3–5 points). Include citations/sources."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📊 Analyst</div>
-                "Analyse /pH-measurements.csv – calculate descriptive statistics, create a boxplot by site and identify outliers"
+                "Load <span class="placeholder">[pH-measurements.csv]</span>. Calculate descriptive statistics (n, mean, median, SD, min/max) for each site. Create a boxplot of pH by site. Define outliers using 1.5×IQR and list them in a table (site, date/ID, value). Finally, briefly interpret possible causes (max 5 points)."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📧 Outlook</div>
-                "Write an email to the journal editor – thank them for reviews, summarise revisions made and request expedited processing. Formal tone."
+                "Write a formal email in English to the editor. Goal: thank for reviews, summarise changes made and request expedited processing. Use only the points I provide below and do not fabricate any facts. Add a subject line and 2 variants of the closing sentence."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">🎥 Teams</div>
-                After a project meeting: "Create minutes, organise by topic and list action items with responsible persons"
+                "From this meeting create minutes: Topics (briefly), Decisions, Open questions, Risks, Action items (task, owner, deadline). At the end add a 5-line summary for management."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📝 Word</div>
-                "Translate the abstract into Czech, preserve scientific terminology. Then create a popular science version for the faculty website."
+                "Translate the abstract into Czech preserving scientific terminology. Then write a popular science version for the faculty website (120–160 words), accessible for non-specialists, without losing key findings."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📊 Excel</div>
-                "Create a pivot table – average pH values by site and season. Add a bar chart."
+                "Create a pivot table: rows = site, columns = season, values = average pH (and measurement count). Add a bar chart of averages and a year filter."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📽️ PowerPoint</div>
-                "Create a presentation from /biodiversity-article.docx – 15 slides for a conference, academic style"
+                "From document <span class="placeholder">[biodiversity-article.docx]</span> create a 15-slide conference presentation in English. Structure: Background, Gap, Methods, Results (3–4 slides), Discussion, Limitations, Takeaways, Future work. Max 5 bullet points per slide, add speaker notes (2–3 sentences) and visual/chart suggestions."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">🌐 Edge</div>
-                Open a journal article PDF in Edge → "Summarise the main findings and methodology of this paper"
+                "From the PDF article summarise: 5 main findings, methodology step by step, 3 limitations, and 3 questions I would ask the authors."
             </div>
             <div class="role-prompt-card vedec">
                 <div class="app-label">📱 Mobile</div>
-                At a conference: photograph a poster → Copilot extracts text and summarises key points
+                "From the poster photo: (1) transcribe the text, (2) summarise 6 key points, (3) suggest 3 questions for the author, (4) draft a 5-sentence follow-up email."
+            </div>
+            <div class="role-prompt-card vedec">
+                <div class="app-label">📋 Forms</div>
+                "Create a field data collection questionnaire in Microsoft Forms: <span class="placeholder">[research name]</span>. Include sections: site identification (GPS, name, habitat type), date and time of sampling, measured parameters <span class="placeholder">[e.g. pH, temperature, humidity]</span> with numeric fields and range validation, photo attachment (upload), notes. Add logic branching – if the respondent selects 'deviation from norm', show follow-up questions. At the end add submission confirmation and automatic email summary of responses."
             </div>
         </div>
     </div>
@@ -525,47 +599,43 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card pedagog">
                 <div class="app-label">💬 Copilot Chat</div>
-                "Based on /ecology-syllabus.docx, create 10 exam questions for students"
+                "Based on document <span class="placeholder">[ecology-syllabus.docx]</span> create 10 exam questions for students. Divide them into 3 difficulty levels (basic/intermediate/advanced), add a brief expected answer (2–3 sentences) for each, and indicate which part of the syllabus it comes from."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">🔬 Researcher</div>
-                "@Researcher What innovative teaching methods in environmental sciences are used at European universities?"
+                "Find out what innovative teaching methods in <span class="placeholder">[your field]</span> are used at European universities (prefer sources from the last 5 years). Return: (1) an overview of 8–12 specific methods with short descriptions, (2) a table of examples (university, course/programme, method, why it works, source link), (3) 5 recommendations that could be easily implemented here. Include sources and links."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📊 Analyst</div>
-                "Analyse /exam-results-WS2025.xlsx – average grades by course, student pass rates, trends vs. last year"
+                "Analyse file <span class="placeholder">[exam-results-WS2025.xlsx]</span>: calculate average scores and pass rates (passed/failed ratio) by course and instructor. Show trends vs. last year (if in the same file or attached data). Identify problem areas (e.g. courses with low pass rates) and suggest 3–5 specific measures."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📧 Outlook</div>
-                "Reply to a student – explain why they didn't receive credit and suggest a consultation slot. Friendly but clear."
+                "Write a polite but clear reply to a student: explain why they didn't receive credit (base it on stated rules and specific criteria), describe what they can do to remedy it, and suggest 2 possible consultation times. Do not use sensitive personal data, be factual and concise (max 150–180 words)."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">🎥 Teams</div>
-                After a department meeting: "Summarise decisions regarding curriculum changes and deadlines"
+                "From this department meeting create minutes with sections: Summary, Decisions (including rationale), Curriculum changes, Deadlines, Responsible persons, Open questions. At the end add a list of action items in the format (task – owner – deadline) and a 5-line summary for management."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📝 Word</div>
-                "Based on /GIS-lecture.pptx, create a study guide in Word – structured text with key concepts"
+                "Based on presentation <span class="placeholder">[GIS-lecture.pptx]</span> create a study guide in Word: structured text with headings, key terms (bold) and short definitions. Add 5 review questions at the end and a mini-glossary (10–15 terms). Preserve scientific terminology."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📽️ PowerPoint</div>
-                "Create a lecture presentation from /hydrology-textbook-ch3.docx – add visual diagrams and a summary at the end"
+                "From document <span class="placeholder">[hydrology-textbook-ch3.docx]</span> create a lecture presentation (12–15 slides). Structure: objectives, key concepts, step-by-step explanation, example/exercise, summary. Max 5 bullet points per slide, add speaker notes (2–3 sentences) and visual suggestions (diagram/chart/image). At the end add 1 summary slide and 1 discussion questions slide."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">📋 Forms</div>
-                "Create a test from /soil-science-ch5.docx – 20 questions, multiple choice, 4 options, mark correct answers"
-            </div>
-            <div class="role-prompt-card pedagog">
-                <div class="app-label">📋 Forms</div>
-                "Create 3 different variants of this test with shuffled questions and answers"
+                "From document <span class="placeholder">[filename.docx]</span> create a test in Microsoft Forms: 20 questions, mostly multiple-choice (4 options), mark the correct answer for each and add a brief explanation why it's correct (1 sentence). Include a mix: definitions, scenario applications, and 2–3 reading comprehension questions."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">🖼️ Create</div>
-                "Create an infographic illustrating the carbon cycle for a climatology lecture"
+                "Design an infographic on <span class="placeholder">[topic]</span> for a <span class="placeholder">[course name]</span> lecture: 6–8 main nodes (atmosphere, oceans, biosphere, soil, fossil sources…), flow arrows with short labels, and 3 key takeaways. Suggest colour coding for categories and a short text caption (max 80 words)."
             </div>
             <div class="role-prompt-card pedagog">
                 <div class="app-label">🤖 Agent</div>
-                Agent "Study Advisor" – pinned study plans, examination rules → students ask about study matters
+                "You are 'Study Advisor' for students. Answer concisely, in a friendly manner and based on the attached rules and study plans. Always: (1) clarify the question with 1–2 follow-up questions if information is missing, (2) suggest a concrete next step, (3) cite relevant links/sections of the rules, (4) flag deadlines and exceptions. Don't guess – if something isn't in the materials, say so and suggest where to verify."
             </div>
         </div>
     </div>
@@ -579,43 +649,51 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card admin">
                 <div class="app-label">💬 Copilot Chat</div>
-                "Summarise my unread emails from the last 3 days and list action items"
+                "Summarise my unread emails from the last <span class="placeholder">[number of days]</span>. Output as a table: Sender | Subject | 1-sentence summary | Required action | Deadline | Priority (High/Medium/Low). At the end create a task list (max 10) sorted by priority and deadline."
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">💬 Copilot Chat</div>
+                "Please act as my Chief of Staff. Look at my inbox and put together the 3 most important things I need to focus on this week. Then look at my calendar and give me a brief, concise overview of what's ahead this week in bullet points."
+            </div>
+            <div class="role-prompt-card admin">
+                <div class="app-label">💬 Copilot Chat</div>
+                "Help me prepare for meetings in the coming week, including what will be expected of me, recommended specific steps to prepare, and suggestions on which things to prioritise over others."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📧 Outlook</div>
-                "Write a bulk email to department heads – remind them of the deadline for annual report materials by March 15."
+                "Write a bulk email to department heads: remind them of the deadline for submitting annual report materials (by <span class="placeholder">[date]</span>). Specify exactly what they need to submit (list of items), where to upload/send it, and a contact for questions. Professional and concise tone, add a clear subject line and a request for acknowledgement of receipt."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">🎥 Teams</div>
-                "Summarise the 'Organisation' channel in Teams – what was discussed in the last 2 weeks?"
+                "Summarise activity in the <span class="placeholder">[channel name]</span> channel over the last <span class="placeholder">[period]</span>. Return: (1) 8–12 main topics, (2) key decisions, (3) open questions, (4) tasks with owner and deadline (if mentioned), (5) links to the most important messages/threads."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📝 Word</div>
-                "Draft an internal directive for business travel records based on /old-directive.docx – update according to new rules"
+                "From document <span class="placeholder">[old-directive.docx]</span> create an updated internal directive for <span class="placeholder">[directive topic]</span>. Keep the structure but: unify terminology, add clear process steps (who–what–when), include a 'Common Mistakes' section and a 'Pre-submission Checklist'. Mark changes (track changes or a 'What's New' section at the beginning)."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📊 Excel</div>
-                "Calculate total business travel costs for 2025 by department and create a summary chart"
+                "In the travel expenses file, calculate total business travel costs for <span class="placeholder">[year]</span> by department and month. Create a clear pivot table (department × month) and add a chart comparing departments. At the end list the Top 5 highest cost items (department, trip/purpose, amount) and a brief commentary on the main cost drivers."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📋 Forms</div>
-                "Create a registration form for FES Open Day – name, email, field of interest, preferred time slot"
+                "Create a registration form for <span class="placeholder">[event name]</span>: name, email (required), phone (optional), area of interest (dropdown), preferred time (dropdown), consent to data processing (required). Add a confirmation message after submission and an automatic email to the participant with a summary of their responses."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">🖼️ Create</div>
-                "Create a poster for the 'Sustainability in Practice' workshop – green colour palette, FES logo"
+                "Design a poster for the <span class="placeholder">[workshop name]</span> workshop. Use a green colour palette and space for the FES logo. Provide 3 layout variants (minimalist / dynamic / formal), each with: title, date/time, venue, short description (max 40 words), speakers (placeholder), registration (QR placeholder). Prepared for A3 print."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">⚙️ Workflows</div>
-                "When an email with an attachment arrives from the dean's office, save it to SharePoint and notify me in Teams"
+                "Create an automation: when an email arrives from <span class="placeholder">[sender]</span> with an attachment, save the attachment to SharePoint in the <span class="placeholder">[target folder]</span> folder (subfolder by year and month) and send a Teams notification to the <span class="placeholder">[channel name]</span> channel with: sender, subject, file name, link to saved file. Handle duplicates (same name → append date/time)."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">🤖 Agent</div>
-                Agent "FES Regulations" – pinned internal norms, dean's directives → colleagues ask questions in natural language
+                "You are an internal assistant 'FES Regulations'. You answer only based on the attached internal norms, Study and Examination Regulations and dean's directives. Write answers concisely and clearly: 1) direct answer, 2) steps to take, 3) reference to specific document/article/paragraph, 4) flag deadlines and exceptions. If the source material is missing, say so and suggest where to verify."
             </div>
             <div class="role-prompt-card admin">
                 <div class="app-label">📱 Mobile</div>
-                On the go: "Summarise my last 3 emails from the vice-dean" – via voice on your phone
+                "Summarise my last 3 emails from <span class="placeholder">[name/role]</span>. For each tell me: what it's about (1 sentence), what they need from me, and by when. Then create a short task list I can tick off right away."
             </div>
         </div>
     </div>
@@ -629,35 +707,39 @@
         <div class="role-prompt-grid">
             <div class="role-prompt-card projekt">
                 <div class="app-label">💬 Copilot Chat</div>
-                "Compare /budget-2025.xlsx with /spending-Q4.xlsx and identify deviations"
+                "Compare files <span class="placeholder">[budget-2025.xlsx]</span> and <span class="placeholder">[spending-Q4.xlsx]</span>. Create an overview of deviations by item and month: plan, actual, difference, % deviation. Highlight deviations &gt; 10% and for each suggest a probable cause (1 sentence) and recommended action. At the end list the 5 biggest budget risks."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">🔬 Researcher</div>
-                "@Researcher Search my emails and files related to the LIFE+ project and create an overview of all deadlines and deliverables"
+                "Search my emails and project files for the <span class="placeholder">[project name]</span> project and compile a complete overview of deadlines and deliverables. Output as a table: Deliverable | Description | Deadline | Responsible person | Status (OK/At risk/Delayed) | Next step. At the end list critical deadlines in the next 30 days and propose a review plan (what to check when)."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📊 Analyst</div>
-                "Analyse /grant-spending.xlsx – create a chart of monthly spending vs. plan and forecast to end of project"
+                "Analyse <span class="placeholder">[grant-spending.xlsx]</span> and create: (1) a chart of monthly spending vs. plan, (2) a spending forecast to end of project (state assumptions), (3) an estimate of over/under-spending risk and its magnitude. Identify the 3 main deviations and write recommendations on what to adjust (budget, timeline, allocation)."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📧 Outlook</div>
-                "Write an email to project partners – summarise milestone status and request submission of reports by Feb 28."
+                "Write an email to project partners in English: briefly summarise milestone status, flag upcoming deadlines and request submission of reports by <span class="placeholder">[date]</span>. Add a clear list of required deliverables, format (max 5 bullet points) and a request for deadline confirmation. Professional but collegial tone."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📝 Word</div>
-                "Summarise /final-report-WP3.docx into a 1-page management summary"
+                "From document <span class="placeholder">[final-report-WP3.docx]</span> create a 1-page management summary. Structure: Objective of <span class="placeholder">[WP number]</span>, what was delivered (3–5 points), key results and impact, deviations and their reasons, risks and mitigation, recommendations/next steps. Write factually, without methodology details."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📊 Excel</div>
-                "Compare planned vs. actual budget by line item, highlight items with deviation > 10%"
+                "Compare planned vs. actual budget by line item (and by partner if possible). Create a table: item | plan | actual | difference | % deviation. Highlight items with deviation &gt; 10% and sort by absolute deviation. Add a summary at category level and a brief commentary on the 3 largest deviations."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">📽️ PowerPoint</div>
-                "Create a progress presentation from /progress-report-Q4.docx – translate to English for international partners"
+                "From document <span class="placeholder">[progress-report-Q4.docx]</span> create a project progress presentation (10–12 slides) for international partners in English. Structure: Context &amp; objectives, Progress vs plan, Key results (3–4 slides), Risks &amp; mitigations, Budget snapshot, Next quarter plan, Requests to partners. Max 5 bullet points per slide, add speaker notes and visual suggestions (timeline, KPI, spending chart)."
             </div>
             <div class="role-prompt-card projekt">
                 <div class="app-label">⚙️ Workflows</div>
-                "7 days before each project milestone, send me a reminder and email the responsible team members"
+                "Set up an automation: 7 days before each project milestone, send a reminder email to responsible team members and a Teams message. The message should include milestone name, deadline, link to relevant documents/folder and a checklist of what to deliver. Also send an escalation to the project lead if 2 days before the deadline the status is not marked as 'Done'."
+            </div>
+            <div class="role-prompt-card projekt">
+                <div class="app-label">📋 Forms</div>
+                "Create a form for monthly partner reporting on the <span class="placeholder">[project name]</span> project: milestone status (dropdown: completed / in progress / delayed), commentary on deviations (text), budget spending in % (number), risks (text), need for coordination (yes/no + description). Add required fields, logic branching (if 'delayed' → reason + new deadline) and automatic email summary to the coordinator."
             </div>
         </div>
     </div>
@@ -726,6 +808,11 @@
         </div>
     </nav>
 
+    <!-- Placeholder legend -->
+    <div style="max-width: 1020px; margin: 0 auto 1rem; padding: 0.6rem 1.2rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 6px; font-size: 0.85rem; color: #856404;">
+        💡 <strong>Tip:</strong> Yellow-highlighted texts in <span class="placeholder">[square brackets]</span> are placeholders — replace them with your own details such as file name, date, topic, etc.
+    </div>
+
     <!-- ===== COPILOT CHAT ===== -->
     <div class="section" id="copilot-chat">
         <h2><span class="emoji">💬</span> Copilot Chat (Central Interface)</h2>
@@ -757,19 +844,19 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                "Summarise key points from /review-article.docx and suggest a discussion structure"
+                "From document <span class="placeholder">[review-article.docx]</span> create: (1) 8–10 key points, (2) 3 main strengths and 3 weaknesses, (3) a proposed discussion outline (max 6 sections) for an internal seminar. Write in bullet points."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "Based on /ecology-syllabus.docx, create 10 exam questions for students"
+                "Based on document <span class="placeholder">[ecology-syllabus.docx]</span> create 10 exam questions for students. Divide them into 3 difficulty levels (basic/intermediate/advanced), add a brief expected answer (2–3 sentences) for each, and indicate which part of the syllabus it comes from."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "Summarise my unread emails from the last 3 days and list action items"
+                "Summarise my unread emails from the last <span class="placeholder">[number of days]</span>. Output as a table: Sender | Subject | 1-sentence summary | Required action | Deadline | Priority (High/Medium/Low). At the end create a task list (max 10) sorted by priority and deadline."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "Compare /budget-2025.xlsx with /spending-Q4.xlsx and identify deviations"
+                "Compare files <span class="placeholder">[budget-2025.xlsx]</span> and <span class="placeholder">[spending-Q4.xlsx]</span>. Create an overview of deviations by item and month: plan, actual, difference, % deviation. Highlight deviations &gt; 10% and for each suggest a probable cause (1 sentence) and recommended action. At the end list the 5 biggest budget risks."
             </div>
         </div>
     </div>
@@ -791,15 +878,15 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                "@Researcher Conduct a review of current biomonitoring methods for urban air quality, focusing on studies from the last 5 years"
+                "Conduct a literature review on <span class="placeholder">[your research topic]</span> methods (last 5 years). Return: (1) a table of 8–12 studies (author/year, location, biomarker/organism, method, key findings, limitations), (2) 5 trends and 5 research gaps, (3) recommendations for our project (3–5 points). Include citations/sources."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "@Researcher What innovative teaching methods in environmental sciences are used at European universities?"
+                "Find out what innovative teaching methods in <span class="placeholder">[your field]</span> are used at European universities (prefer sources from the last 5 years). Return: (1) an overview of 8–12 specific methods with short descriptions, (2) a table of examples (university, course/programme, method, why it works, source link), (3) 5 recommendations that could be easily implemented here. Include sources and links."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "@Researcher Search my emails and files related to the LIFE+ project and create an overview of all deadlines and deliverables"
+                "Search my emails and project files for the <span class="placeholder">[project name]</span> project and compile a complete overview of deadlines and deliverables. Output as a table: Deliverable | Description | Deadline | Responsible person | Status (OK/At risk/Delayed) | Next step. At the end list critical deadlines in the next 30 days and propose a review plan (what to check when)."
             </div>
         </div>
 
@@ -821,15 +908,15 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                "Analyse /pH-measurements.csv – calculate descriptive statistics, create a boxplot by site and identify outliers"
+                "Load <span class="placeholder">[pH-measurements.csv]</span>. Calculate descriptive statistics (n, mean, median, SD, min/max) for each site. Create a boxplot of pH by site. Define outliers using 1.5×IQR and list them in a table (site, date/ID, value). Finally, briefly interpret possible causes (max 5 points)."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "Analyse /exam-results-WS2025.xlsx – average grades by course, student pass rates, trends vs. last year"
+                "Analyse file <span class="placeholder">[exam-results-WS2025.xlsx]</span>: calculate average scores and pass rates (passed/failed ratio) by course and instructor. Show trends vs. last year (if in the same file or attached data). Identify problem areas (e.g. courses with low pass rates) and suggest 3–5 specific measures."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "Analyse /grant-spending.xlsx – create a chart of monthly spending vs. plan and forecast to end of project"
+                "Analyse <span class="placeholder">[grant-spending.xlsx]</span> and create: (1) a chart of monthly spending vs. plan, (2) a spending forecast to end of project (state assumptions), (3) an estimate of over/under-spending risk and its magnitude. Identify the 3 main deviations and write recommendations on what to adjust (budget, timeline, allocation)."
             </div>
         </div>
 
@@ -843,7 +930,7 @@
         <h3>Reading & Summarising</h3>
         <ul>
             <li><strong>Summarise long emails and threads</strong> – click "Summarise" to get key points from an entire conversation</li>
-            <li><strong>Catch up after leave/conference</strong> – "Summarise my most important emails from the last 2 weeks"</li>
+            <li><strong>Catch up after leave/conference</strong> – "Summarise my most important emails from the last <span class="placeholder">[period]</span>"</li>
             <li><strong>Task identification</strong> – "What tasks have I received by email in the last month?"</li>
         </ul>
 
@@ -858,19 +945,19 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                "Write an email to the journal editor – thank them for reviews, summarise revisions made and request expedited processing. Formal tone."
+                "Write a formal email in English to the editor. Goal: thank for reviews, summarise changes made and request expedited processing. Use only the points I provide below and do not fabricate any facts. Add a subject line and 2 variants of the closing sentence."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "Reply to a student – explain why they didn't receive credit and suggest a consultation slot. Friendly but clear."
+                "Write a polite but clear reply to a student: explain why they didn't receive credit (base it on stated rules and specific criteria), describe what they can do to remedy it, and suggest 2 possible consultation times. Do not use sensitive personal data, be factual and concise (max 150–180 words)."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "Write a bulk email to department heads – remind them of the deadline for annual report materials by March 15."
+                "Write a bulk email to department heads: remind them of the deadline for submitting annual report materials (by <span class="placeholder">[date]</span>). Specify exactly what they need to submit (list of items), where to upload/send it, and a contact for questions. Professional and concise tone, add a clear subject line and a request for acknowledgement of receipt."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "Write an email to project partners – summarise milestone status and request submission of reports by Feb 28."
+                "Write an email to project partners in English: briefly summarise milestone status, flag upcoming deadlines and request submission of reports by <span class="placeholder">[date]</span>. Add a clear list of required deliverables, format (max 5 bullet points) and a request for deadline confirmation. Professional but collegial tone."
             </div>
         </div>
 
@@ -899,15 +986,15 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                After a project meeting: "Create minutes, organise by topic and list action items with responsible persons"
+                "From this meeting create minutes: Topics (briefly), Decisions, Open questions, Risks, Action items (task, owner, deadline). At the end add a 5-line summary for management."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                After a department meeting: "Summarise decisions regarding curriculum changes and deadlines"
+                "From this department meeting create minutes with sections: Summary, Decisions (including rationale), Curriculum changes, Deadlines, Responsible persons, Open questions. At the end add a list of action items in the format (task – owner – deadline) and a 5-line summary for management."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "Summarise the 'Organisation' channel in Teams – what was discussed in the last 2 weeks?"
+                "Summarise activity in the <span class="placeholder">[channel name]</span> channel over the last <span class="placeholder">[period]</span>. Return: (1) 8–12 main topics, (2) key decisions, (3) open questions, (4) tasks with owner and deadline (if mentioned), (5) links to the most important messages/threads."
             </div>
         </div>
 
@@ -942,19 +1029,19 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                "Translate the abstract into Czech, preserve scientific terminology. Then create a popular science version for the faculty website."
+                "Translate the abstract into Czech preserving scientific terminology. Then write a popular science version for the faculty website (120–160 words), accessible for non-specialists, without losing key findings."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "Based on /GIS-lecture.pptx, create a study guide in Word – structured text with key concepts"
+                "Based on presentation <span class="placeholder">[GIS-lecture.pptx]</span> create a study guide in Word: structured text with headings, key terms (bold) and short definitions. Add 5 review questions at the end and a mini-glossary (10–15 terms). Preserve scientific terminology."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "Draft an internal directive for business travel records based on /old-directive.docx – update according to new rules"
+                "From document <span class="placeholder">[old-directive.docx]</span> create an updated internal directive for <span class="placeholder">[directive topic]</span>. Keep the structure but: unify terminology, add clear process steps (who–what–when), include a 'Common Mistakes' section and a 'Pre-submission Checklist'. Mark changes (track changes or a 'What's New' section at the beginning)."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "Summarise /final-report-WP3.docx into a 1-page management summary"
+                "From document <span class="placeholder">[final-report-WP3.docx]</span> create a 1-page management summary. Structure: Objective of <span class="placeholder">[WP number]</span>, what was delivered (3–5 points), key results and impact, deviations and their reasons, risks and mitigation, recommendations/next steps. Write factually, without methodology details."
             </div>
         </div>
 
@@ -987,15 +1074,15 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                "Create a pivot table – average pH values by site and season. Add a bar chart."
+                "Create a pivot table: rows = site, columns = season, values = average pH (and measurement count). Add a bar chart of averages and a year filter."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "Calculate total business travel costs for 2025 by department and create a summary chart"
+                "In the travel expenses file, calculate total business travel costs for <span class="placeholder">[year]</span> by department and month. Create a clear pivot table (department × month) and add a chart comparing departments. At the end list the Top 5 highest cost items (department, trip/purpose, amount) and a brief commentary on the main cost drivers."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "Compare planned vs. actual budget by line item, highlight items with deviation &gt; 10%"
+                "Compare planned vs. actual budget by line item (and by partner if possible). Create a table: item | plan | actual | difference | % deviation. Highlight items with deviation &gt; 10% and sort by absolute deviation. Add a summary at category level and a brief commentary on the 3 largest deviations."
             </div>
         </div>
 
@@ -1024,22 +1111,22 @@
 
         <h3>Editing & Translation</h3>
         <ul>
-            <li><strong>Structure editing</strong> – preview topics, add/remove slides before generating</li>
+            <li><strong>Structure editing</strong> – preview topics, add/remove slides</li>
             <li><strong>Translate entire presentation</strong> – to any language, preserves design and images</li>
         </ul>
 
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                "Create a presentation from /biodiversity-article.docx – 15 slides for a conference, academic style"
+                "From document <span class="placeholder">[biodiversity-article.docx]</span> create a 15-slide conference presentation in English. Structure: Background, Gap, Methods, Results (3–4 slides), Discussion, Limitations, Takeaways, Future work. Max 5 bullet points per slide, add speaker notes (2–3 sentences) and visual/chart suggestions."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "Create a lecture presentation from /hydrology-textbook-ch3.docx – add visual diagrams and a summary at the end"
+                "From document <span class="placeholder">[hydrology-textbook-ch3.docx]</span> create a lecture presentation (12–15 slides). Structure: objectives, key concepts, step-by-step explanation, example/exercise, summary. Max 5 bullet points per slide, add speaker notes (2–3 sentences) and visual suggestions (diagram/chart/image). At the end add 1 summary slide and 1 discussion questions slide."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "Create a progress presentation from /progress-report-Q4.docx – translate to English for international partners"
+                "From document <span class="placeholder">[progress-report-Q4.docx]</span> create a project progress presentation (10–12 slides) for international partners in English. Structure: Context &amp; objectives, Progress vs plan, Key results (3–4 slides), Risks &amp; mitigations, Budget snapshot, Next quarter plan, Requests to partners. Max 5 bullet points per slide, add speaker notes and visual suggestions (timeline, KPI, spending chart)."
             </div>
         </div>
 
@@ -1058,21 +1145,25 @@
         </ul>
 
         <div class="use-cases">
-            <div class="use-case-card pedagog">
-                <div class="role-label">🎓 Educator</div>
-                "Create a test from /soil-science-ch5.docx – 20 questions, multiple choice, 4 options, mark correct answers"
+            <div class="use-case-card vedec">
+                <div class="role-label">🔬 Researcher</div>
+                "Create a field data collection questionnaire in Microsoft Forms: <span class="placeholder">[research name]</span>. Include sections: site identification (GPS, name, habitat type), date and time of sampling, measured parameters <span class="placeholder">[e.g. pH, temperature, humidity]</span> with numeric fields and range validation, photo attachment (upload), notes. Add logic branching – if the respondent selects 'deviation from norm', show follow-up questions. At the end add submission confirmation and automatic email summary of responses."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "Create 3 different variants of this test with shuffled questions and answers"
+                "From document <span class="placeholder">[filename.docx]</span> create a test in Microsoft Forms: 20 questions, mostly multiple-choice (4 options), mark the correct answer for each and add a brief explanation why it's correct (1 sentence). Include a mix: definitions, scenario applications, and 2–3 reading comprehension questions."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "Create a registration form for FES Open Day – name, email, field of interest, preferred time slot"
+                "Create a registration form for <span class="placeholder">[event name]</span>: name, email (required), phone (optional), area of interest (dropdown), preferred time (dropdown), consent to data processing (required). Add a confirmation message after submission and an automatic email to the participant with a summary of their responses."
+            </div>
+            <div class="use-case-card projekt">
+                <div class="role-label">📐 Project Management</div>
+                "Create a form for monthly partner reporting on the <span class="placeholder">[project name]</span> project: milestone status (dropdown: completed / in progress / delayed), commentary on deviations (text), budget spending in % (number), risks (text), need for coordination (yes/no + description). Add required fields, logic branching (if 'delayed' → reason + new deadline) and automatic email summary to the coordinator."
             </div>
         </div>
 
-        <div class="tip">💡 Perfect for educators – generate unlimited test variants from a single textbook chapter in minutes.</div>
+        <div class="tip">💡 Forms can do more than tests – field data collection, partner reporting and event registrations. Data flows directly into Excel.</div>
     </div>
 
     <!-- ===== CREATE ===== -->
@@ -1088,11 +1179,11 @@
         <div class="use-cases">
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                "Create an infographic illustrating the carbon cycle for a climatology lecture"
+                "Design an infographic on <span class="placeholder">[topic]</span> for a <span class="placeholder">[course name]</span> lecture: 6–8 main nodes (atmosphere, oceans, biosphere, soil, fossil sources…), flow arrows with short labels, and 3 key takeaways. Suggest colour coding for categories and a short text caption (max 80 words)."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "Create a poster for the 'Sustainability in Practice' workshop – green colour palette, FES logo"
+                "Design a poster for the <span class="placeholder">[workshop name]</span> workshop. Use a green colour palette and space for the FES logo. Provide 3 layout variants (minimalist / dynamic / formal), each with: title, date/time, venue, short description (max 40 words), speakers (placeholder), registration (QR placeholder). Prepared for A3 print."
             </div>
         </div>
     </div>
@@ -1109,11 +1200,11 @@
         <div class="use-cases">
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                "When an email with an attachment arrives from the dean's office, save it to SharePoint and notify me in Teams"
+                "Create an automation: when an email arrives from <span class="placeholder">[sender]</span> with an attachment, save the attachment to SharePoint in the <span class="placeholder">[target folder]</span> folder (subfolder by year and month) and send a Teams notification to the <span class="placeholder">[channel name]</span> channel with: sender, subject, file name, link to saved file. Handle duplicates (same name → append date/time)."
             </div>
             <div class="use-case-card projekt">
                 <div class="role-label">📐 Project Management</div>
-                "7 days before each project milestone, send me a reminder and email the responsible team members"
+                "Set up an automation: 7 days before each project milestone, send a reminder email to responsible team members and a Teams message. The message should include milestone name, deadline, link to relevant documents/folder and a checklist of what to deliver. Also send an escalation to the project lead if 2 days before the deadline the status is not marked as 'Done'."
             </div>
         </div>
 
@@ -1142,11 +1233,11 @@
         <div class="use-cases">
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                Agent "FES Regulations" – pinned internal norms, dean's directives → colleagues ask questions in natural language
+                "You are an internal assistant 'FES Regulations'. You answer only based on the attached internal norms, Study and Examination Regulations and dean's directives. Write answers concisely and clearly: 1) direct answer, 2) steps to take, 3) reference to specific document/article/paragraph, 4) flag deadlines and exceptions. If the source material is missing, say so and suggest where to verify."
             </div>
             <div class="use-case-card pedagog">
                 <div class="role-label">🎓 Educator</div>
-                Agent "Study Advisor" – pinned study plans, examination rules → students ask about study matters
+                "You are 'Study Advisor' for students. Answer concisely, in a friendly manner and based on the attached rules and study plans. Always: (1) clarify the question with 1–2 follow-up questions if information is missing, (2) suggest a concrete next step, (3) cite relevant links/sections of the rules, (4) flag deadlines and exceptions. Don't guess – if something isn't in the materials, say so and suggest where to verify."
             </div>
         </div>
     </div>
@@ -1163,7 +1254,7 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                Open a journal article PDF in Edge → "Summarise the main findings and methodology of this paper"
+                "From the PDF article summarise: 5 main findings, methodology step by step, 3 limitations, and 3 questions I would ask the authors."
             </div>
         </div>
     </div>
@@ -1181,11 +1272,11 @@
         <div class="use-cases">
             <div class="use-case-card vedec">
                 <div class="role-label">🔬 Researcher</div>
-                At a conference: photograph a poster → Copilot extracts text and summarises key points
+                "From the poster photo: (1) transcribe the text, (2) summarise 6 key points, (3) suggest 3 questions for the author, (4) draft a 5-sentence follow-up email."
             </div>
             <div class="use-case-card admin">
                 <div class="role-label">🏢 Administration</div>
-                On the go: "Summarise my last 3 emails from the vice-dean" – via voice on your phone
+                "Summarise my last 3 emails from <span class="placeholder">[name/role]</span>. For each tell me: what it's about (1 sentence), what they need from me, and by when. Then create a short task list I can tick off right away."
             </div>
         </div>
     </div>
@@ -1292,7 +1383,7 @@
 </div>
 
 <div class="footer">
-    Getting Started with Microsoft 365 Copilot – FES CULS | Based on 3 M365 Copilot webinars | 2026
+    Getting Started with Microsoft 365 Copilot – FES CULS | Created by <a href="https://www.linkedin.com/in/vladim%C3%ADra-jurasov%C3%A1" target="_blank" style="color: inherit; text-decoration: underline;">Vladimíra Jurasová</a> | <a href="mailto:mullerovav@fzp.czu.cz" style="color: inherit; text-decoration: underline;">mullerovav@fzp.czu.cz</a> | 2026
 </div>
 
 <script>
@@ -1328,4 +1419,3 @@
 
 </body>
 </html>
-
